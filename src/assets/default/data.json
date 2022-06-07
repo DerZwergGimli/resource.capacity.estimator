@@ -1,0 +1,60 @@
+{
+  "hosts": [
+    {
+      "uuid": "992a36f6-e699-11ec-8fea-0242ac120002",
+      "name": "Host1",
+      "manufacturer": "Dell",
+      "cpu": {
+        "sockets": 2,
+        "cores": 64
+      },
+      "ram": {
+        "slots": 8,
+        "size": 16
+      },
+      "storage": {
+        "amount": 10,
+        "size": 1000
+      }
+    },
+    {
+      "uuid": "2009466c-e69a-11ec-8fea-0242ac120002",
+      "name": "Host1",
+      "manufacturer": "Dell",
+      "cpu": {
+        "sockets": 2,
+        "cores": 64
+      },
+      "ram": {
+        "slots": 8,
+        "size": 16
+      },
+      "storage": {
+        "amount": 10,
+        "size": 1000
+      }
+    }
+  ],
+  "vms": [
+    {
+      "uuid": "71e6c248-e69a-11ec-8fea-0242ac120002",
+      "name": "ES_Windows",
+      "os": "Windows",
+      "vcpu": {
+        "min": 2,
+        "rec": 4,
+        "max": 6
+      },
+      "vram": {
+        "min": 2,
+        "rec": 4,
+        "max": 6
+      },
+      "vstorage": {
+        "min": 2,
+        "rec": 4,
+        "max": 6
+      }
+    }
+  ]
+}
