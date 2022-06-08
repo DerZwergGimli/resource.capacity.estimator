@@ -1,6 +1,7 @@
 export interface AppData {
   hosts: AppDataHosts[];
   vms: AppDataVms[];
+  assignments: AppDataAssignments[];
 }
 export interface AppDataHostsCpu {
   sockets: number;
@@ -48,4 +49,9 @@ export interface AppDataVms {
   vcpu: AppDataVmsVcpu;
   vram: AppDataVmsVram;
   vstorage: AppDataVmsVstorage;
+}
+export interface AppDataAssignments {
+  host_id: number;
+  host_index: number;
+  vm_id: number;
 }

@@ -1,12 +1,16 @@
 import { defineStore } from "pinia";
-import { AppDataHosts, AppDataVms } from "@/js/types/data-types";
+import {
+  AppDataAssignments,
+  AppDataHosts,
+  AppDataVms,
+} from "@/js/types/data-types";
 
 export const dataStore = defineStore({
   id: "data_store",
   state: () => ({
-    test: 0,
     hosts: [] as Array<AppDataHosts>,
     vms: [] as Array<AppDataVms>,
+    assignments: [] as Array<AppDataAssignments>,
   }),
   actions: {
     async init() {
@@ -16,12 +20,15 @@ export const dataStore = defineStore({
         .then((data) => {
           this.hosts = data.hosts;
           this.vms = data.vms;
+          this.assignments = data.assignments;
         })
         .catch((err) => console.error(err));
     },
-    check_init() {
+    async check_init() {
       if ((this.hosts.length || this.vms.length) === 0) {
-        this.init().then(() => console.log("initialized uninitialized data"));
+        await this.init().then(() =>
+          console.log("initialized uninitialized data")
+        );
       }
     },
     export() {

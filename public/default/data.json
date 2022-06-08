@@ -63,11 +63,12 @@
       }
     },
     {
-      "id": 0,
+      "id": 1,
       "uuid": "71e6c248-e69a-11ec-8fea-0242ac120002",
-      "name": "OS_Windows",
+      "name": "AAAA",
       "os": "Windows",
       "amount": 2,
+
       "vcpu": {
         "min": 2,
         "rec": 4,
@@ -83,6 +84,18 @@
         "rec": 4,
         "max": 6
       }
+    }
+  ],
+  "assignments": [
+    {
+      "host_id": 0,
+      "host_index": 0,
+      "vm_id": 0
+    },
+    {
+      "host_id": 1,
+      "host_index": 0,
+      "vm_id": 0
     }
   ]
 }

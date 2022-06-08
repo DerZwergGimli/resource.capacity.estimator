@@ -7,10 +7,18 @@
   <DragDropArea class="m-4"></DragDropArea>
 </template>
 
-<script setup lang="ts"></script>
-<script>
-import DragDropArea from "@/components/special/DragDropArea";
-export default {
-  components: { DragDropArea },
-};
+<script setup lang="ts">
+import { defineComponent, onMounted } from "vue";
+import DragDropArea from "@/components/special/DragDropArea.vue";
+
+import { dataStore } from "@/store/DataStore";
+const data = dataStore();
+
+defineComponent({ DragDropArea });
+
+onMounted(async () => {
+  await data.check_init();
+
+  console.log(data.assignments.filter((a) => a.vm_id === 0).length);
+});
 </script>
