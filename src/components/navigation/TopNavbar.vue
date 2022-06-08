@@ -10,6 +10,9 @@
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/import">Import</router-link></li>
         <li><router-link to="/export">Export</router-link></li>
+        <li><router-link to="/host">Host</router-link></li>
+        <li><router-link to="/vm">VM</router-link></li>
+        <li><router-link to="/assign">Assignment</router-link></li>
         <li><router-link to="/about">About</router-link></li>
       </ul>
       <SwitchTheme class="ml-2"></SwitchTheme>
@@ -19,7 +22,7 @@
 
 <script setup lang="ts">
 import { defineComponent } from "vue";
-import SwitchTheme from "@/components/buttons/SwitchTheme.vue";
+import SwitchTheme from "@/components/button/SwitchTheme.vue";
 
 defineComponent({ SwitchTheme });
 </script>

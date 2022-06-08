@@ -18,6 +18,21 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/ExportView.vue"),
   },
   {
+    path: "/host",
+    name: "host",
+    component: () => import("@/views/HostView.vue"),
+  },
+  {
+    path: "/vm",
+    name: "vm",
+    component: () => import("@/views/VMView.vue"),
+  },
+  {
+    path: "/assign",
+    name: "assign",
+    component: () => import("@/views/AssignmentView.vue"),
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting

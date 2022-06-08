@@ -15,9 +15,11 @@ export interface AppDataHostsStorage {
   size: number;
 }
 export interface AppDataHosts {
+  id: number;
   uuid: string;
   name: string;
   manufacturer: string;
+  amount: number;
   cpu: AppDataHostsCpu;
   ram: AppDataHostsRam;
   storage: AppDataHostsStorage;
@@ -38,9 +40,11 @@ export interface AppDataVmsVstorage {
   max: number;
 }
 export interface AppDataVms {
+  id: number;
   uuid: string;
   name: string;
   os: string;
+  amount: number;
   vcpu: AppDataVmsVcpu;
   vram: AppDataVmsVram;
   vstorage: AppDataVmsVstorage;
