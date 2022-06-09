@@ -51,7 +51,7 @@ export interface AppDataVms {
   vstorage: AppDataVmsVstorage;
 }
 export interface AppDataAssignments {
-  host_id: number;
+  host_uuid: string;
   host_index: number;
-  vm_id: number;
+  vm_uuid: string;
 }

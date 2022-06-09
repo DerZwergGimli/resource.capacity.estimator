@@ -72,7 +72,7 @@
           <th>
             <i
               class="btn btn-sm bi bi-trash"
-              @click="$emit('clk_remove_item', host.uuid)"
+              @click="(host_uuid) => $emit('clk_remove_item', host_uuid)"
             ></i>
           </th>
         </tr>
