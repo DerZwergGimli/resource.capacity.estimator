@@ -1,7 +1,7 @@
 <template>
-  <div class="home flex flex-col">
+  <div class="flex flex-col">
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
-      <h1>About</h1>
+      <h1>Print Preview</h1>
     </div>
     <div class="flex flex-row justify-center space-x-2">
       <p class="basis-1/2">

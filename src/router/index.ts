@@ -33,6 +33,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/AssignmentView.vue"),
   },
   {
+    path: "/printout",
+    name: "printout",
+    component: () => import("@/views/PrintOutView.vue"),
+  },
+
+  {
     path: "/about",
     name: "about",
     // route level code-splitting

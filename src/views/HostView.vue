@@ -3,7 +3,11 @@
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>Hosts Configuration</h1>
     </div>
-    <HostTable class="m-4" :hosts="data.hosts"></HostTable>
+    <HostTable
+      class="m-4"
+      :hosts="data.hosts"
+      @clk_remove_item="(host_id) => clk_removeItem(host_id)"
+    ></HostTable>
     <div>
       <button class="btn" @click="clk_addHost()">Add Host</button>
     </div>
@@ -11,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { uuid } from "vue-uuid";
 import HostTable from "@/components/table/HostTable.vue";
 import { dataStore } from "@/store/DataStore";
 import { defineComponent } from "vue";
@@ -28,13 +33,20 @@ defineComponent({ HostTable });
 function clk_addHost() {
   data.hosts.push({
     id: data.hosts.length,
-    uuid: "000",
+    uuid: uuid.v4(),
     name: "new_host",
     manufacturer: "no-name",
     amount: 0,
     cpu: { sockets: 0, cores: 0 },
     ram: { slots: 0, size: 0 },
     storage: { amount: 0, size: 0 },
+  });
+}
+
+function clk_removeItem(host_id: number) {
+  let item_to_remove = data.hosts.find((host) => host.id == host_id);
+  data.hosts = data.hosts.filter((host) => {
+    return host !== item_to_remove;
   });
 }
 </script>

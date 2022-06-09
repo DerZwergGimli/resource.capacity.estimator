@@ -1,16 +1,33 @@
 <template>
   <div class="">
-    <div class="flex flex-row">
+    <div class="flex flex-row space-x-2">
       <div>Min:</div>
-      <div>{{ min }}</div>
+      <div>
+        <input
+          class="input input-primary input-bordered input-xs w-full max-w-xs"
+          type="number"
+          :value="min"
+          @input="(event) => $emit('changed_min', event.target.value)"
+        />
+      </div>
     </div>
-    <div class="flex flex-row">
+    <div class="flex flex-row space-x-2">
       <div>Rec:</div>
-      <div>{{ rec }}</div>
+      <input
+        class="input input-primary input-bordered input-xs w-full max-w-xs"
+        type="number"
+        :value="rec"
+        @input="(event) => $emit('changed_rec', event.target.value)"
+      />
     </div>
-    <div class="flex flex-row">
+    <div class="flex flex-row space-x-2">
       <div>Max:</div>
-      <div>{{ min }}</div>
+      <input
+        class="input input-primary input-bordered input-xs w-full max-w-xs"
+        type="number"
+        :value="max"
+        @input="(event) => $emit('changed_max', event.target.value)"
+      />
     </div>
   </div>
 </template>

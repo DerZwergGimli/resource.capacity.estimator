@@ -11,6 +11,7 @@
           <th>RAM</th>
           <th>Storage</th>
           <th>Amount</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -19,14 +20,16 @@
           <th>{{ vm.id }}</th>
           <th>
             <input
-              class="input input-bordered w-full max-w-xs"
+              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              type="text"
               :value="vm.name"
               @input="(event) => (vm.name = event.target.value)"
             />
           </th>
           <th>
             <input
-              class="input input-bordered w-full max-w-xs"
+              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              type="text"
               :value="vm.os"
               @input="(event) => (vm.os = event.target.value)"
             />
@@ -34,25 +37,48 @@
           <th>
             <VMResources
               :min="vm.vcpu.min"
+              @changed_min="(value) => (vm.vcpu.min = value)"
               :rec="vm.vcpu.rec"
+              @changed_rec="(value) => (vm.vcpu.rec = value)"
               :max="vm.vcpu.max"
+              @changed_max="(value) => (vm.vcpu.max = value)"
             ></VMResources>
           </th>
           <th>
             <VMResources
               :min="vm.vram.min"
+              @changed_min="(value) => (vm.vram.min = value)"
               :rec="vm.vram.rec"
+              @changed_rec="(value) => (vm.vram.rec = value)"
               :max="vm.vram.max"
+              @changed_max="(value) => (vm.vram.max = value)"
             ></VMResources>
           </th>
           <th>
             <VMResources
               :min="vm.vstorage.min"
+              @changed_min="(value) => (vm.vstorage.min = value)"
               :rec="vm.vstorage.rec"
+              @changed_rec="(value) => (vm.vstorage.rec = value)"
               :max="vm.vstorage.max"
+              @changed_max="(value) => (vm.vstorage.max = value)"
             ></VMResources>
           </th>
-          <th>{{ vm.amount }}</th>
+          <th>
+            <input
+              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              type="number"
+              :value="vm.amount"
+              @input="(event) => (vm.amount = event.target.value)"
+            />
+          </th>
+          <th>
+            <label
+              class="btn btn-sm btn-circle text-2xs right-2 top-2"
+              @click="$emit('clk_remove_item', vm.id)"
+              >x</label
+            >
+          </th>
         </tr>
       </tbody>
     </table>
