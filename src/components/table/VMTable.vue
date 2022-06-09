@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-x-auto">
-    <table class="table w-full">
+    <table class="table w-full table-zebra">
       <!-- head -->
       <thead>
         <tr>
@@ -17,8 +17,20 @@
         <!-- body -->
         <tr v-for="vm in vms" :key="vm">
           <th>{{ vm.id }}</th>
-          <th>{{ vm.name }}</th>
-          <th>{{ vm.os }}</th>
+          <th>
+            <input
+              class="input input-bordered w-full max-w-xs"
+              :value="vm.name"
+              @input="(event) => (vm.name = event.target.value)"
+            />
+          </th>
+          <th>
+            <input
+              class="input input-bordered w-full max-w-xs"
+              :value="vm.os"
+              @input="(event) => (vm.os = event.target.value)"
+            />
+          </th>
           <th>
             <VMResources
               :min="vm.vcpu.min"

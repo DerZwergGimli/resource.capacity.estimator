@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-x-auto">
-    <table class="table w-full">
+    <table class="table w-full table-zebra">
       <!-- head -->
       <thead>
         <tr>
@@ -17,8 +17,22 @@
         <!-- body -->
         <tr v-for="host in hosts" :key="host">
           <th>{{ host.id }}</th>
-          <th>{{ host.name }}</th>
-          <th>{{ host.manufacturer }}</th>
+          <th>
+            <input
+              class="input input-bordered w-full max-w-xs"
+              type="text"
+              :value="host.name"
+              @input="(event) => (host.name = event.target.value)"
+            />
+          </th>
+          <th>
+            <input
+              class="input input-bordered w-full max-w-xs"
+              type="text"
+              :value="host.manufacturer"
+              @input="(event) => (host.manufacturer = event.target.value)"
+            />
+          </th>
           <th>
             <div>{{ host.cpu.sockets }}</div>
             <div>{{ host.cpu.cores }}</div>
@@ -31,7 +45,14 @@
             <div>{{ host.storage.amount }}</div>
             <div>{{ host.storage.size }}</div>
           </th>
-          <th>{{ host.amount }}</th>
+          <th>
+            <input
+              class="input input-bordered"
+              type="number"
+              :value="host.amount"
+              @input="(event) => (host.amount = event.target.value)"
+            />
+          </th>
         </tr>
       </tbody>
     </table>

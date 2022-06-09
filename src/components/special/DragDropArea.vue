@@ -24,11 +24,14 @@
       &<br />
       drop
     </div>
-    <div class="flex-grow bg-base-300 rounded-box">
+    <div class="grid flex-grow card bg-base-300 rounded-box">
       <div v-for="host in hosts" :key="host">
-        <div v-for="n in host.amount" :key="n" class="bg-secondary">
+        <div
+          v-for="n in host.amount"
+          :key="n"
+          class="bg-base-200 hover:bg-base-300"
+        >
           <div
-            v-if="host.amount > 1"
             @drop="onDrop($event, host, n - 1)"
             @dragenter.prevent
             @dragover.prevent
@@ -44,29 +47,14 @@
                 ).length"
                 :key="res"
               >
-                <span class="badge">
+                <div class="text-sm">
                   {{ vm.name }}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            v-else
-            @drop="onDrop($event, host, 0)"
-            @dragenter.prevent
-            @dragover.prevent
-          >
-            {{ host.name }}
-            <div v-for="vm in vms" :key="vm">
-              <div
-                v-for="res in data.assignments.filter(
-                  (a) => a.host_id === host.id && a.vm_id === vm.id
-                ).length"
-                :key="res"
-              >
-                <span class="badge">
-                  {{ vm.name }}
-                </span>
+                  <label
+                    class="btn btn-sm btn-circle text-2xs right-2 top-2"
+                    @click="clk_remove(host.id, vm.id)"
+                    >x</label
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -80,7 +68,6 @@
 import { dataStore } from "@/store/DataStore";
 import { storeToRefs } from "pinia/dist/pinia";
 const data = dataStore();
-data.assignments = undefined;
 const { vms, hosts, assignments } = storeToRefs(data);
 
 function dragStart(event, vm_id) {
@@ -106,6 +93,16 @@ function onDrop(event, host, host_index) {
   });
   //let vmID = parseInt(event.dataTransfer.getData("vmID"));
   //assignments.push({ host_id: host.id, host_index: host_index, vm_id: 0 });
+}
+
+function clk_remove(host_id, vm_id) {
+  console.log("host_id: " + host_id + ", vm_id" + vm_id);
+  let item_to_remove = data.assignments.find(
+    (assignment) => assignment.host_id === host_id && assignment.vm_id === vm_id
+  );
+  data.assignments = this.assignments.filter((assignment) => {
+    return assignment !== item_to_remove;
+  });
 }
 </script>
 

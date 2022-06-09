@@ -84,6 +84,29 @@
         "rec": 4,
         "max": 6
       }
+    },
+    {
+      "id": 2,
+      "uuid": "71e6c248-e69a-11ec-8fea-0242ac120002",
+      "name": "SuperMega",
+      "os": "Windows",
+      "amount": 2,
+
+      "vcpu": {
+        "min": 2,
+        "rec": 4,
+        "max": 6
+      },
+      "vram": {
+        "min": 2,
+        "rec": 4,
+        "max": 6
+      },
+      "vstorage": {
+        "min": 2,
+        "rec": 4,
+        "max": 6
+      }
     }
   ],
   "assignments": [

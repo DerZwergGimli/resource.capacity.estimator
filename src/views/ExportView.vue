@@ -3,6 +3,7 @@
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>Export</h1>
     </div>
+    <button class="btn m-4">SAVE</button>
     <div class="mx-4 bg-base-300 p-2">
       <vue-json-pretty :path="'res'" :data="data.export()"></vue-json-pretty>
     </div>
