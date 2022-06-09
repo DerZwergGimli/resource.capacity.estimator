@@ -20,7 +20,7 @@
           <th>{{ vm.id }}</th>
           <th>
             <input
-              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              class="input input-bordered input-xs w-full max-w-xs"
               type="text"
               :value="vm.name"
               @input="(event) => (vm.name = event.target.value)"
@@ -28,7 +28,7 @@
           </th>
           <th>
             <input
-              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              class="input input-bordered input-xs w-full max-w-xs"
               type="text"
               :value="vm.os"
               @input="(event) => (vm.os = event.target.value)"
@@ -66,7 +66,7 @@
           </th>
           <th>
             <input
-              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              class="input input-bordered input-xs w-full max-w-xs"
               type="number"
               :value="vm.amount"
               @input="(event) => (vm.amount = event.target.value)"
