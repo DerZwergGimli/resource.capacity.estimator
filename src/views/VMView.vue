@@ -61,8 +61,8 @@ function clk_addVM() {
   createToast("New VM added!", { type: "success" });
 }
 
-function clk_removeItem(vm_id: number) {
-  let item_to_remove = data.vms.find((vm) => vm.id == vm_id);
+function clk_removeItem(vm_uuid: string) {
+  let item_to_remove = data.vms.find((vm) => vm.uuid == vm_uuid);
   data.vms = data.vms.filter((vm) => {
     return vm !== item_to_remove;
   });

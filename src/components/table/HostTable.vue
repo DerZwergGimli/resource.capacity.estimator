@@ -16,8 +16,8 @@
       </thead>
       <tbody>
         <!-- body -->
-        <tr v-for="host in hosts" :key="host">
-          <th>{{ host.id }}</th>
+        <tr v-for="(host, index) in hosts" :key="host">
+          <th>{{ index }}</th>
           <th>
             <input
               class="input input-primary input-bordered input-xs w-full max-w-xs"
@@ -72,7 +72,7 @@
           <th>
             <i
               class="btn btn-sm bi bi-trash"
-              @click="$emit('clk_remove_item', host.id)"
+              @click="$emit('clk_remove_item', host.uuid)"
             ></i>
           </th>
         </tr>

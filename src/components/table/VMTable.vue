@@ -73,11 +73,10 @@
             />
           </th>
           <th>
-            <label
-              class="btn btn-sm btn-circle text-2xs right-2 top-2"
-              @click="$emit('clk_remove_item', vm.id)"
-              >x</label
-            >
+            <i
+              class="btn btn-sm bi bi-trash"
+              @click="$emit('clk_remove_item', vm.uuid)"
+            ></i>
           </th>
         </tr>
       </tbody>

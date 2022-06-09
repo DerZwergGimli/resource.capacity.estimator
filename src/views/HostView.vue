@@ -54,8 +54,8 @@ function clk_addHost() {
   createToast("New Host added!", { type: "success" });
 }
 
-function clk_removeItem(host_id: number) {
-  let item_to_remove = data.hosts.find((host) => host.id == host_id);
+function clk_removeItem(host_uuid: string) {
+  let item_to_remove = data.hosts.find((host) => host.uuid == host_uuid);
   data.hosts = data.hosts.filter((host) => {
     return host !== item_to_remove;
   });
