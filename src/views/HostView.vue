@@ -1,7 +1,15 @@
 <template>
   <div class="host flex flex-col text-center">
-    <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
+    <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
       <h1>Hosts Configuration</h1>
+      <div class="flex flex-row space-x-2">
+        <ValueCard text="host" :value="data.hosts.length"></ValueCard>
+        <ValueCard text="vm" :value="data.vms.length"></ValueCard>
+        <ValueCard
+          text="assignment"
+          :value="data.assignments.length"
+        ></ValueCard>
+      </div>
     </div>
     <HostTable
       class="m-4"
@@ -24,6 +32,7 @@ import {
   AppDataHostsRam,
   AppDataHostsStorage,
 } from "@/js/types/data-types";
+import ValueCard from "@/components/special/ValueCard.vue";
 const data = dataStore();
 
 data.check_init();

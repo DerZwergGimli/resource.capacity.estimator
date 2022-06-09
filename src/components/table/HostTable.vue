@@ -38,6 +38,7 @@
             <HostResources
               :first_value="host.cpu.sockets"
               :second_value="host.cpu.cores"
+              type="cpu"
               @changed_first="(value) => (host.cpu.sockets = value)"
               @changed_second="(value) => (host.cpu.cores = value)"
             ></HostResources>
@@ -46,6 +47,7 @@
             <HostResources
               :first_value="host.ram.slots"
               :second_value="host.ram.size"
+              type="ram"
               @changed_first="(value) => (host.ram.slots = value)"
               @changed_second="(value) => (host.ram.size = value)"
             ></HostResources>
@@ -54,6 +56,7 @@
             <HostResources
               :first_value="host.storage.amount"
               :second_value="host.storage.size"
+              type="storage"
               @changed_first="(value) => (host.storage.amount = value)"
               @changed_second="(value) => (host.storage.size = value)"
             ></HostResources>
@@ -67,11 +70,10 @@
             />
           </th>
           <th>
-            <label
-              class="btn btn-sm btn-circle text-2xs right-2 top-2"
+            <i
+              class="btn btn-sm bi bi-trash"
               @click="$emit('clk_remove_item', host.id)"
-              >x</label
-            >
+            ></i>
           </th>
         </tr>
       </tbody>

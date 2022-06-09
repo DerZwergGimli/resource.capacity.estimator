@@ -1,7 +1,15 @@
 <template>
   <div class="flex flex-col text-center">
-    <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
+    <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
       <h1>VM Configuration</h1>
+      <div class="flex flex-row space-x-2">
+        <ValueCard text="host" :value="data.hosts.length"></ValueCard>
+        <ValueCard text="vm" :value="data.vms.length"></ValueCard>
+        <ValueCard
+          text="assignment"
+          :value="data.assignments.length"
+        ></ValueCard>
+      </div>
     </div>
     <VMTable
       class="m-4"
@@ -19,7 +27,7 @@ import VMTable from "@/components/table/VMTable.vue";
 import { uuid } from "vue-uuid";
 import { dataStore } from "@/store/DataStore";
 import { defineComponent, PropType } from "vue";
-import { AppDataVms } from "@/js/types/data-types";
+import ValueCard from "@/components/special/ValueCard.vue";
 const data = dataStore();
 
 data.check_init();

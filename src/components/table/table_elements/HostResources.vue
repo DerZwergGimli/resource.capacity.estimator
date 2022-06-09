@@ -1,19 +1,34 @@
 <template>
-  <div>
-    <input
-      class="input input-primary input-bordered input-xs w-full max-w-xs"
-      type="number"
-      :value="first_value"
-      @input="(event) => $emit('changed_first', event.target.value)"
-    />
-  </div>
-  <div>
-    <input
-      class="input input-primary input-bordered input-xs w-full max-w-xs"
-      type="number"
-      :value="second_value"
-      @input="(event) => $emit('changed_second', event.target.value)"
-    />
+  <div class="flex flex-row space-x-2">
+    <i
+      :class="
+        type === 'cpu'
+          ? 'bi bi-cpu'
+          : type === 'ram'
+          ? 'bi bi-memory'
+          : 'bi bi-device-hdd'
+      "
+    ></i>
+    <div class="grid grid-cols-2 gap-x-1">
+      <input
+        class="input input-primary input-bordered input-xs w-full max-w-xs"
+        type="number"
+        :value="first_value"
+        @input="(event) => $emit('changed_first', event.target.value)"
+      />
+      <p class="text-xs pt-1">
+        {{ type === "cpu" ? "Sockets" : type === "ram" ? "Slots" : "Slots" }}
+      </p>
+      <input
+        class="input input-primary input-bordered input-xs w-full max-w-xs"
+        type="number"
+        :value="second_value"
+        @input="(event) => $emit('changed_second', event.target.value)"
+      />
+      <p class="text-xs pt-1">
+        {{ type === "cpu" ? "Cores" : type === "ram" ? "GB" : "GB" }}
+      </p>
+    </div>
   </div>
 </template>
 
