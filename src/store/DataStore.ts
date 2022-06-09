@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import {
+  AppData,
   AppDataAssignments,
   AppDataHosts,
   AppDataVms,
@@ -31,8 +32,18 @@ export const dataStore = defineStore({
         );
       }
     },
+    import(data: AppData) {
+      console.log(data);
+      this.hosts = data.hosts || [];
+      this.vms = data.vms || [];
+      this.assignments = data.assignments || [];
+    },
     export() {
-      return { hosts: this.hosts, vms: this.vms };
+      return {
+        hosts: this.hosts,
+        vms: this.vms,
+        assignments: this.assignments,
+      };
     },
   },
 });

@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import VMTable from "@/components/table/VMTable.vue";
 import { uuid } from "vue-uuid";
+import { createToast } from "mosha-vue-toastify";
 import { dataStore } from "@/store/DataStore";
 import { defineComponent, PropType } from "vue";
 import ValueCard from "@/components/special/ValueCard.vue";
@@ -57,12 +58,16 @@ function clk_addVM() {
       max: 0,
     },
   });
+  createToast("New VM added!", { type: "success" });
 }
 
 function clk_removeItem(vm_id: number) {
   let item_to_remove = data.vms.find((vm) => vm.id == vm_id);
   data.vms = data.vms.filter((vm) => {
     return vm !== item_to_remove;
+  });
+  createToast("VM " + item_to_remove?.name + " removed!", {
+    type: "success",
   });
 }
 </script>

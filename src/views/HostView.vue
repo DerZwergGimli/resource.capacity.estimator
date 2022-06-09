@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import { uuid } from "vue-uuid";
 import HostTable from "@/components/table/HostTable.vue";
+import { createToast } from "mosha-vue-toastify";
 import { dataStore } from "@/store/DataStore";
 import { defineComponent } from "vue";
 import {
@@ -50,12 +51,16 @@ function clk_addHost() {
     ram: { slots: 0, size: 0 },
     storage: { amount: 0, size: 0 },
   });
+  createToast("New Host added!", { type: "success" });
 }
 
 function clk_removeItem(host_id: number) {
   let item_to_remove = data.hosts.find((host) => host.id == host_id);
   data.hosts = data.hosts.filter((host) => {
     return host !== item_to_remove;
+  });
+  createToast("Host " + item_to_remove?.name + " removed!", {
+    type: "success",
   });
 }
 </script>
