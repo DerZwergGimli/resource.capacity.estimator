@@ -11,7 +11,7 @@
     ></i>
     <div class="grid grid-cols-2 gap-x-1">
       <input
-        class="input input-primary input-bordered input-xs w-full max-w-xs"
+        class="input input-bordered input-xs w-full max-w-xs"
         type="number"
         :value="first_value"
         @input="(event) => $emit('changed_first', event.target.value)"
@@ -20,7 +20,7 @@
         {{ type === "cpu" ? "Sockets" : type === "ram" ? "Slots" : "Slots" }}
       </p>
       <input
-        class="input input-primary input-bordered input-xs w-full max-w-xs"
+        class="input input-bordered input-xs w-full max-w-xs"
         type="number"
         :value="second_value"
         @input="(event) => $emit('changed_second', event.target.value)"

@@ -20,7 +20,7 @@
           <th>{{ index }}</th>
           <th>
             <input
-              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              class="input input-bordered input-xs w-full max-w-xs"
               type="text"
               :value="host.name"
               @input="(event) => (host.name = event.target.value)"
@@ -28,7 +28,7 @@
           </th>
           <th>
             <input
-              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              class="input input-bordered input-xs w-full max-w-xs"
               type="text"
               :value="host.manufacturer"
               @input="(event) => (host.manufacturer = event.target.value)"
@@ -63,7 +63,7 @@
           </th>
           <th>
             <input
-              class="input input-primary input-bordered input-xs w-full max-w-xs"
+              class="input input-bordered input-xs w-full max-w-xs"
               type="number"
               :value="host.amount"
               @input="(event) => (host.amount = event.target.value)"

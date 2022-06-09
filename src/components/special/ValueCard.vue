@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-t from-base-100 to-accent p-2 rounded-md">
+  <div class="bg-gradient-to-b from-primary to-secondary p-2 rounded-md">
     <h2 class="text-sm capitalize">Total {{ text }}'s</h2>
     <div class="flex justify-center space-x-2">
       <i
