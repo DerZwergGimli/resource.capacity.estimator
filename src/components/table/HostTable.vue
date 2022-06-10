@@ -39,8 +39,8 @@
               :first_value="host.cpu.sockets"
               :second_value="host.cpu.cores"
               type="cpu"
-              @changed_first="(value) => (host.cpu.sockets = value)"
-              @changed_second="(value) => (host.cpu.cores = value)"
+              @changed_first="(value) => (host.cpu.sockets = parseInt(value))"
+              @changed_second="(value) => (host.cpu.cores = parseInt(value))"
             ></HostResources>
           </th>
           <th>
@@ -48,8 +48,8 @@
               :first_value="host.ram.slots"
               :second_value="host.ram.size"
               type="ram"
-              @changed_first="(value) => (host.ram.slots = value)"
-              @changed_second="(value) => (host.ram.size = value)"
+              @changed_first="(value) => (host.ram.slots = parseInt(value))"
+              @changed_second="(value) => (host.ram.size = parseInt(value))"
             ></HostResources>
           </th>
           <th>
@@ -57,8 +57,10 @@
               :first_value="host.storage.amount"
               :second_value="host.storage.size"
               type="storage"
-              @changed_first="(value) => (host.storage.amount = value)"
-              @changed_second="(value) => (host.storage.size = value)"
+              @changed_first="
+                (value) => (host.storage.amount = parseInt(value))
+              "
+              @changed_second="(value) => (host.storage.size = parseInt(value))"
             ></HostResources>
           </th>
           <th>
@@ -66,7 +68,7 @@
               class="input input-bordered input-xs w-full max-w-xs"
               type="number"
               :value="host.amount"
-              @input="(event) => (host.amount = event.target.value)"
+              @input="(event) => (host.amount = parseInt(event.target.value))"
             />
           </th>
           <th>

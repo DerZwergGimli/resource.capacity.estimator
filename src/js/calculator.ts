@@ -1,4 +1,4 @@
-import { AppData } from "@/js/types/data-types";
+import { AppData, AppDataHosts, AppDataVms } from "@/js/types/data-types";
 import {
   host_resource_types,
   system_dimensioning_types,
@@ -82,4 +82,18 @@ function calculate_used_percentage(
   array_vm_resources: []
 ) {
   return 0;
+}
+
+export function calculate_total_hosts(hosts: AppDataHosts[]): number {
+  const total_hosts_list = hosts.map((host) => host.amount);
+  return total_hosts_list.reduce((a, b) => {
+    return a + b;
+  });
+}
+
+export function calculate_total_vms(vms: AppDataVms[]): number {
+  const total_hosts_list = vms.map((vm) => vm.amount);
+  return total_hosts_list.reduce((a, b) => {
+    return a + b;
+  });
 }

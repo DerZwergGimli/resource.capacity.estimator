@@ -3,8 +3,12 @@
     <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
       <h1>VM Configuration</h1>
       <div class="flex flex-row space-x-2">
-        <ValueCard text="host" :value="data.hosts.length"></ValueCard>
-        <ValueCard text="vm" :value="data.vms.length"></ValueCard>
+        <!-- TODO: Move this into a separate component  -->
+        <ValueCard
+          text="host"
+          :value="calculate_total_hosts(data.hosts)"
+        ></ValueCard>
+        <ValueCard text="vm" :value="calculate_total_vms(data.vms)"></ValueCard>
         <ValueCard
           text="assignment"
           :value="data.assignments.length"
@@ -23,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import { calculate_total_hosts, calculate_total_vms } from "@/js/calculator";
 import VMTable from "@/components/table/VMTable.vue";
 import { uuid } from "vue-uuid";
 import { createToast } from "mosha-vue-toastify";
