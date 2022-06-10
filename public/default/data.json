@@ -103,9 +103,9 @@
         "max": 6
       },
       "vstorage": {
-        "min": 2,
-        "rec": 4,
-        "max": 6
+        "min": 100,
+        "rec": 150,
+        "max": 200
       }
     }
   ],
@@ -114,6 +114,11 @@
       "host_uuid": "992a36f6-e699-11ec-8fea-0242ac120002",
       "host_index": 0,
       "vm_uuid": "71e6c248-e69a-11ec-8fea-0242ac120002"
+    },
+    {
+      "host_uuid": "992a36f6-e699-11ec-8fea-0242ac120002",
+      "host_index": 0,
+      "vm_uuid": "31f6c248-e69a-11ec-8fea-0242ac120002"
     }
   ]
 }

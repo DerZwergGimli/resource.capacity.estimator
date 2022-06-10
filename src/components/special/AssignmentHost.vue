@@ -9,7 +9,97 @@
       @dragenter.prevent
       @dragover.prevent
     >
-      {{ host.name }}_{{ n }}
+      <div class="flex flex-row space-x-5 bg-accent-focus hover:bg-accent">
+        <div>{{ host.name }}_{{ n }}</div>
+        <div class="flex flex-row space-x-1">
+          <i class="bi bi-cpu"></i>
+          <progress
+            class="progress mt-2"
+            :value="
+              calculate_cpu_used(
+                data,
+                host.uuid,
+                n - 1,
+                host_resource_types.cpu,
+                vm_resource_types.vcpu,
+                system_dimensioning_types.rec
+              )
+            "
+            max="100"
+          ></progress>
+          <div>
+            {{
+              calculate_cpu_used(
+                data,
+                host.uuid,
+                n - 1,
+                host_resource_types.cpu,
+                vm_resource_types.vcpu,
+                system_dimensioning_types.rec
+              ).toFixed(0)
+            }}%
+          </div>
+        </div>
+        <div class="flex flex-row space-x-1">
+          <i class="bi bi-memory"></i>
+          <progress
+            class="progress mt-2"
+            :value="
+              calculate_cpu_used(
+                data,
+                host.uuid,
+                n - 1,
+                host_resource_types.ram,
+                vm_resource_types.vcpu,
+                system_dimensioning_types.rec
+              )
+            "
+            max="100"
+          ></progress>
+          <div>
+            {{
+              calculate_cpu_used(
+                data,
+                host.uuid,
+                n - 1,
+                host_resource_types.ram,
+                vm_resource_types.vram,
+                system_dimensioning_types.rec
+              ).toFixed(0)
+            }}%
+          </div>
+        </div>
+        <div class="flex flex-row space-x-1">
+          <i class="bi bi-hdd"></i>
+          <progress
+            class="progress mt-2"
+            :value="
+              calculate_cpu_used(
+                data,
+                host.uuid,
+                n - 1,
+                host_resource_types.storage,
+                vm_resource_types.vstorage,
+                system_dimensioning_types.rec
+              )
+            "
+            max="100"
+          ></progress>
+          <div>
+            {{
+              calculate_cpu_used(
+                data,
+                host.uuid,
+                n - 1,
+                host_resource_types.storage,
+                vm_resource_types.vstorage,
+                system_dimensioning_types.rec
+              ).toFixed(0)
+            }}%
+          </div>
+        </div>
+      </div>
+
       <div v-for="vm in vms" :key="vm">
         <div
           v-for="res in data.assignments.filter(
@@ -21,7 +111,7 @@
           :key="res"
         >
           <AssignmentVMElement
-            :name="vm.name"
+            :vm="vm"
             :host_uuid="host.uuid"
             @clk_remove_item="(host_uuid) => clk_remove(host_uuid, vm.uuid)"
           ></AssignmentVMElement>
@@ -36,6 +126,13 @@ import { defineProps, PropType } from "vue";
 import { AppDataHosts, AppDataVms } from "@/js/types/data-types";
 import { dataStore } from "@/store/DataStore";
 import AssignmentVMElement from "@/components/special/assignment_elements/AssignmentVMElement.vue";
+import { calculate_cpu_used } from "@/js/calculator";
+import {
+  host_resource_types,
+  vm_resource_types,
+  system_dimensioning_types,
+} from "@/js/types/enums";
+
 const data = dataStore();
 
 defineProps({

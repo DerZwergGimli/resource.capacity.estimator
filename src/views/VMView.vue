@@ -38,7 +38,7 @@ defineComponent({ VMTable });
 function clk_addVM() {
   data.vms.push({
     id: data.vms.length,
-    uuid: uuid.v4,
+    uuid: uuid.v4(),
     name: "new_vm",
     os: "none",
     amount: 0,

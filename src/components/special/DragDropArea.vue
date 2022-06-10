@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <div
-      class="grid flex-grow card bg-base-300 rounded-box place-items-center py-2"
+      class="flex flex-grow card bg-base-300 rounded-box place-items-center py-2"
     >
       <div v-for="vm in vms" :key="vm" class="flex flex-col space-y-1">
         <div
