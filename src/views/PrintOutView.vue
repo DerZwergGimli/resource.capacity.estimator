@@ -4,17 +4,50 @@
       <h1>Print Preview</h1>
     </div>
     <div class="flex flex-row justify-center space-x-2">
-      <p class="basis-1/2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Euismod elementum
-        nisi quis eleifend quam. Cursus eget nunc scelerisque viverra mauris in
-        aliquam. Aliquam faucibus purus in massa. Id donec ultrices tincidunt
-        arcu non sodales neque. Sagittis id consectetur purus ut faucibus
-        pulvinar elementum. Tincidunt eget nullam non nisi est. Et malesuada
-        fames ac turpis egestas integer eget aliquet. Scelerisque eleifend donec
-        pretium vulputate sapien nec. Neque viverra justo nec ultrices dui
-        sapien eget mi. Lacinia at quis risus sed vulputate odio ut enim.
-      </p>
+      <button class="btn btn-primary" @click="generatePDF()">
+        Generate PDF
+      </button>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+import { dataStore } from "@/store/DataStore";
+const data = dataStore();
+data.check_init();
+
+let vms_list = data.vms.map((vms, index) => {
+  return [index, vms.name, vms.os, vms.amount];
+});
+
+let hosts_list = data.hosts.map((host, index) => {
+  return [index, host.name, host.manufacturer, host.amount];
+});
+
+data.assignments.sort(function (a, b) {
+  return a.host_uuid.localeCompare(b.host_uuid);
+});
+
+console.log(data.assignments);
+
+function generatePDF() {
+  const doc = new jsPDF();
+
+  doc.text("VM-Table", 15, 10);
+  autoTable(doc, {
+    head: [["ID", "VM-Name", "OS", "Amount"]],
+    body: vms_list,
+  });
+
+  doc.addPage();
+  doc.text("Host-Table", 15, 10);
+  autoTable(doc, {
+    head: [["ID", "Host-Name", "Manufacturer", "Amount"]],
+    body: hosts_list,
+  });
+
+  doc.save("Resource_Calculator_Export.pdf");
+}
+</script>

@@ -12,6 +12,8 @@
     "core-js": "^3.22.8",
     "daisyui": "^2.15.2",
     "downloadjs": "^1.4.7",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.25",
     "mosha-vue-toastify": "^1.0.23",
     "pinia": "^2.0.14",
     "theme-change": "^2.0.2",
