@@ -9,7 +9,7 @@
       @dragenter.prevent
       @dragover.prevent
     >
-      <div class="flex flex-row space-x-5 bg-accent-focus hover:bg-accent">
+      <div class="flex flex-row space-x-5 bg-accent hover:bg-accent-focus">
         <div>{{ host.name }}_{{ n }}</div>
         <div class="flex flex-row space-x-1">
           <i class="bi bi-cpu"></i>
@@ -22,7 +22,7 @@
                 n - 1,
                 host_resource_types.cpu,
                 vm_resource_types.vcpu,
-                system_dimensioning_types.rec
+                data.sdt_selected
               )
             "
             max="100"
@@ -35,7 +35,7 @@
                 n - 1,
                 host_resource_types.cpu,
                 vm_resource_types.vcpu,
-                system_dimensioning_types.rec
+                data.sdt_selected
               ).toFixed(0)
             }}%
           </div>
@@ -51,7 +51,7 @@
                 n - 1,
                 host_resource_types.ram,
                 vm_resource_types.vcpu,
-                system_dimensioning_types.rec
+                data.sdt_selected
               )
             "
             max="100"
@@ -64,7 +64,7 @@
                 n - 1,
                 host_resource_types.ram,
                 vm_resource_types.vram,
-                system_dimensioning_types.rec
+                data.sdt_selected
               ).toFixed(0)
             }}%
           </div>
@@ -80,7 +80,7 @@
                 n - 1,
                 host_resource_types.storage,
                 vm_resource_types.vstorage,
-                system_dimensioning_types.rec
+                data.sdt_selected
               )
             "
             max="100"
@@ -93,7 +93,7 @@
                 n - 1,
                 host_resource_types.storage,
                 vm_resource_types.vstorage,
-                system_dimensioning_types.rec
+                data.sdt_selected
               ).toFixed(0)
             }}%
           </div>

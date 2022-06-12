@@ -25,6 +25,7 @@
       drop
     </div>
     <div class="grid flex-grow card bg-base-300 rounded-box">
+      <SystemDimensioningTabs></SystemDimensioningTabs>
       <div v-for="host in hosts" :key="host">
         <AssignmentHost :host="host" :vms="data.vms"></AssignmentHost>
       </div>
@@ -36,6 +37,8 @@
 import { dataStore } from "@/store/DataStore";
 import { storeToRefs } from "pinia/dist/pinia";
 import AssignmentHost from "@/components/special/AssignmentHost";
+
+import SystemDimensioningTabs from "@/components/special/SystemDimensioningTabs.vue";
 const data = dataStore();
 const { vms, hosts } = storeToRefs(data);
 

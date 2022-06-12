@@ -4,13 +4,14 @@
       <h1>Assignment</h1>
     </div>
   </div>
-  <DragDropArea class="m-4"></DragDropArea>
+  <div class="m-4">
+    <DragDropArea class="m-4"></DragDropArea>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, onMounted } from "vue";
 import DragDropArea from "@/components/special/DragDropArea.vue";
-
 import { dataStore } from "@/store/DataStore";
 const data = dataStore();
 

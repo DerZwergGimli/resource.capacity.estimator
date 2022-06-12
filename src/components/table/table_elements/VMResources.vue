@@ -1,34 +1,37 @@
 <template>
-  <div class="">
-    <div class="flex flex-row space-x-2">
-      <div>Min:</div>
-      <div>
-        <input
-          class="input input-bordered input-xs w-full max-w-xs"
-          type="number"
-          :value="min"
-          @input="(event) => $emit('changed_min', event.target.value)"
-        />
-      </div>
-    </div>
-    <div class="flex flex-row space-x-2">
-      <div>Rec:</div>
+  <div class="space-y-1 form-control">
+    <label class="input-group input-group-xs">
+      <span class="w-14">Min</span>
       <input
-        class="input input-bordered input-xs w-full max-w-xs"
         type="number"
+        placeholder="Type here"
+        class="input input-bordered input-xs"
+        :value="min"
+        @input="(event) => $emit('changed_min', event.target.value)"
+      />
+    </label>
+
+    <label class="input-group input-group-xs">
+      <span class="w-14">Rec</span>
+      <input
+        type="number"
+        placeholder="Type here"
+        class="input input-bordered input-xs"
         :value="rec"
         @input="(event) => $emit('changed_rec', event.target.value)"
       />
-    </div>
-    <div class="flex flex-row space-x-2">
-      <div>Max:</div>
+    </label>
+
+    <label class="input-group input-group-xs">
+      <span class="w-14">Max</span>
       <input
-        class="input input-bordered input-xs w-full max-w-xs"
         type="number"
+        placeholder="Type here"
+        class="input input-bordered input-xs"
         :value="max"
         @input="(event) => $emit('changed_max', event.target.value)"
       />
-    </div>
+    </label>
   </div>
 </template>
 

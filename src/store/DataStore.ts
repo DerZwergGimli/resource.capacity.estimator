@@ -5,6 +5,7 @@ import {
   AppDataHosts,
   AppDataVms,
 } from "@/js/types/data-types";
+import { system_dimensioning_types } from "@/js/types/enums";
 
 export const dataStore = defineStore({
   id: "data_store",
@@ -12,6 +13,7 @@ export const dataStore = defineStore({
     hosts: [] as Array<AppDataHosts>,
     vms: [] as Array<AppDataVms>,
     assignments: [] as Array<AppDataAssignments>,
+    sdt_selected: "" as system_dimensioning_types,
   }),
   actions: {
     async init() {
@@ -24,6 +26,7 @@ export const dataStore = defineStore({
           this.assignments = data.assignments;
         })
         .catch((err) => console.error(err));
+      this.sdt_selected = system_dimensioning_types.rec;
     },
     async check_init() {
       if ((this.hosts.length || this.vms.length) === 0) {
