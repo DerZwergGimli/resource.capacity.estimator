@@ -7,15 +7,19 @@
   <div class="m-4">
     <DragDropArea class="m-4"></DragDropArea>
   </div>
+  <div class="m-4">
+    <DragDropArea2 class="m-4"></DragDropArea2>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, onMounted } from "vue";
 import DragDropArea from "@/components/special/DragDropArea.vue";
+import DragDropArea2 from "@/components/special/DargDropArea2.vue";
 import { dataStore } from "@/store/DataStore";
 const data = dataStore();
 
-defineComponent({ DragDropArea });
+defineComponent({ DragDropArea, DragDropArea2 });
 
 onMounted(async () => {
   await data.check_init();

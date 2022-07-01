@@ -86,11 +86,12 @@
 
 <script setup lang="ts">
 import { defineProps, PropType } from "vue";
-import { AppDataVms } from "@/js/types/data-types";
 import VMResources from "@/components/table/table_elements/VMResources.vue";
+import { VM } from "@/store/types/VM";
+
 defineProps({
   vms: {
-    type: Array as PropType<AppDataVms[]>,
+    type: Array as PropType<VM[]>,
     default: null,
   },
 });

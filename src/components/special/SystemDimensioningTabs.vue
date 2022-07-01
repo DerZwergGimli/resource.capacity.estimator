@@ -1,24 +1,28 @@
 <template>
   <div class="tabs justify-center">
     <a
-      v-for="sdt of system_dimensioning_types"
-      :key="sdt"
+      v-for="system_recommendation_enum of SystemRecommendationEnums"
+      :key="system_recommendation_enum"
       v-bind:class="
         'tab tab-lifted uppercase text-md ' +
-        (sdt === data.sdt_selected ? 'tab-active' : '')
+        (system_recommendation_enum === storage.system_recommendation
+          ? 'tab-active'
+          : '')
       "
-      @click="clk_selectSystemDimensions(sdt)"
-      >{{ sdt }}</a
+      @click="clk_selectSystemDimensions(system_recommendation_enum)"
+      >{{ system_recommendation_enum }}</a
     >
   </div>
 </template>
 
 <script setup lang="ts">
-import { system_dimensioning_types } from "@/js/types/enums";
-import { dataStore } from "@/store/DataStore";
-const data = dataStore();
+import { appStorage } from "@/store/AppStorage";
+import { SystemRecommendationEnums } from "@/store/types/enums";
+const storage = appStorage();
 
-function clk_selectSystemDimensions(sdt: system_dimensioning_types) {
-  data.sdt_selected = sdt;
+function clk_selectSystemDimensions(
+  system_recommendation: SystemRecommendationEnums
+) {
+  storage.system_recommendation = system_recommendation;
 }
 </script>

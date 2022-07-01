@@ -5,7 +5,7 @@
     </div>
     <button class="btn m-4" @click="clk_download()">Download</button>
     <div class="mx-4 bg-base-300 p-2">
-      <vue-json-pretty :path="'res'" :data="data.export()"></vue-json-pretty>
+      <vue-json-pretty :path="'res'" :data="store.export()"></vue-json-pretty>
     </div>
   </div>
 </template>
@@ -17,16 +17,16 @@ import "vue-json-pretty/lib/styles.css";
 import { defineComponent } from "vue";
 import download from "downloadjs";
 
-import { dataStore } from "@/store/DataStore";
-const data = dataStore();
-data.check_init();
+import { appStorage } from "@/store/AppStorage";
+const store = appStorage();
+store.init();
 
 defineComponent({ VueJsonPretty });
 
 function clk_download() {
   createToast("Download started...", { type: "info" });
   download(
-    JSON.stringify(data.export(), null, 3),
+    JSON.stringify(store.export(), null, 3),
     "resource_capacity_estimator_export.json",
     "text/plain"
   );

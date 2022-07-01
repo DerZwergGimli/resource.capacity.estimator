@@ -85,12 +85,12 @@
 
 <script setup lang="ts">
 import { defineProps, PropType } from "vue";
-import { AppDataHosts } from "@/js/types/data-types";
+import { Host } from "@/store/types/Host";
 import HostResources from "@/components/table/table_elements/HostResources.vue";
 
 defineProps({
   hosts: {
-    type: Array as PropType<AppDataHosts[]>,
+    type: Array as PropType<Host[]>,
     default: null,
   },
 });

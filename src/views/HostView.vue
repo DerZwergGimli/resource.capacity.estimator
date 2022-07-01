@@ -4,22 +4,21 @@
       <h1>Hosts Configuration</h1>
       <div class="flex flex-row space-x-2">
         <!-- TODO: Move this into a separate component  -->
-        <ValueCard
+        <!--        <ValueCard
           text="host"
-          :value="calculate_total_hosts(data.hosts)"
+          :value="calculate_total_hosts(store.hosts)"
         ></ValueCard>
-        <ValueCard text="vm" :value="calculate_total_vms(data.vms)"></ValueCard>
+        <ValueCard
+          text="vm"
+          :value="calculate_total_vms(store.vms)"
+        ></ValueCard>
         <ValueCard
           text="assignment"
-          :value="data.assignments.length"
-        ></ValueCard>
+          :value="store.assignments.length"
+        ></ValueCard>-->
       </div>
     </div>
-    <HostTable
-      class="m-4"
-      :hosts="data.hosts"
-      @clk_remove_item="(host_id) => clk_removeItem(host_id)"
-    ></HostTable>
+    <HostTable class="m-4" :hosts="store.hostsList"></HostTable>
     <div>
       <button class="btn" @click="clk_addHost()">Add Host</button>
     </div>
@@ -31,7 +30,7 @@ import { calculate_total_hosts, calculate_total_vms } from "@/js/calculator";
 import { uuid } from "vue-uuid";
 import HostTable from "@/components/table/HostTable.vue";
 import { createToast } from "mosha-vue-toastify";
-import { dataStore } from "@/store/DataStore";
+import { appStorage } from "@/store/AppStorage";
 import { defineComponent } from "vue";
 import {
   AppDataHostsCpu,
@@ -39,16 +38,16 @@ import {
   AppDataHostsStorage,
 } from "@/js/types/data-types";
 import ValueCard from "@/components/special/ValueCard.vue";
-const data = dataStore();
+const store = appStorage();
 
-data.check_init();
+store.init();
 
 defineComponent({ HostTable });
 
 function clk_addHost() {
-  data.hosts.push({
-    id: data.hosts.length,
-    uuid: uuid.v4(),
+  store.hostsList.push({
+    id: store.hostsList.length,
+    uuids: [uuid.v4().toString()],
     name: "new_host",
     manufacturer: "no-name",
     amount: 0,
@@ -59,13 +58,13 @@ function clk_addHost() {
   createToast("New Host added!", { type: "success" });
 }
 
-function clk_removeItem(host_uuid: string) {
-  let item_to_remove = data.hosts.find((host) => host.uuid == host_uuid);
-  data.hosts = data.hosts.filter((host) => {
+/*function clk_removeItem(host_uuid: string) {
+  let item_to_remove = store.hostsList.find((host) => host.uuid == host_uuid);
+  store.hosts = store.hosts.filter((host) => {
     return host !== item_to_remove;
   });
   createToast("Host " + item_to_remove?.name + " removed!", {
     type: "success",
   });
-}
+}*/
 </script>
