@@ -2,7 +2,7 @@
   <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
     <h1>Assignment</h1>
   </div>
-  <div class="flex flex-col w-full lg:flex-row">
+  <div class="flex flex-col w-full m-4 lg:flex-row">
     <div
       class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
     >
@@ -30,6 +30,7 @@
                   vm.uuids.find((uuid) => uuid === vm_element_uuid)
                 )
               "
+              :system_recommendation="storage.system_recommendation"
             ></AssignmentVMElement>
           </div>
         </div>
@@ -74,6 +75,7 @@
                     vm.uuids.find((vm_uuid) => vm_uuid === assigned_vm_uuid)
                   )
                 "
+                :system_recommendation="storage.system_recommendation"
               ></AssignmentVMElement>
               <button
                 class="btn btn-xs"

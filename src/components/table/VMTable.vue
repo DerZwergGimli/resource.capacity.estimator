@@ -16,8 +16,8 @@
       </thead>
       <tbody>
         <!-- body -->
-        <tr v-for="vm in vms" :key="vm">
-          <th>{{ vm.id }}</th>
+        <tr v-for="(vm, index) in vms" :key="vm">
+          <th>{{ index }}</th>
           <th>
             <input
               class="input input-bordered input-xs w-full max-w-xs"

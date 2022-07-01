@@ -39,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/test",
-    name: "printout",
+    name: "test",
     component: () => import("@/views/AssignmentTest.vue"),
   },
 

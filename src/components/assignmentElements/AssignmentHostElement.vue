@@ -11,6 +11,7 @@
 import { defineProps, PropType } from "vue";
 import { Host } from "@/store/types/Host";
 import { Assignment } from "@/store/types/Assignment";
+import { SystemRecommendationEnums } from "@/store/types/enums";
 
 defineProps({
   host: {
@@ -20,6 +21,10 @@ defineProps({
   assignements: {
     type: Object as PropType<Assignment>,
     default: undefined,
+  },
+  system_recommendation: {
+    type: String as PropType<SystemRecommendationEnums>,
+    default: "rec",
   },
 });
 </script>

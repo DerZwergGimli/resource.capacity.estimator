@@ -14,23 +14,21 @@
 <script setup lang="ts">
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { dataStore } from "@/store/DataStore";
-const data = dataStore();
-data.check_init();
+import { appStorage } from "@/store/AppStorage";
+const storage = appStorage();
+storage.init();
 
-let vms_list = data.vms.map((vms, index) => {
+let vms_list = storage.vmsList.map((vms, index) => {
   return [index, vms.name, vms.os, vms.amount];
 });
 
-let hosts_list = data.hosts.map((host, index) => {
+let hosts_list = storage.hostsList.map((host, index) => {
   return [index, host.name, host.manufacturer, host.amount];
 });
 
-data.assignments.sort(function (a, b) {
+/*storage.assignmentsList.sort(function (a, b) {
   return a.host_uuid.localeCompare(b.host_uuid);
-});
-
-console.log(data.assignments);
+});*/
 
 function generatePDF() {
   const doc = new jsPDF();
