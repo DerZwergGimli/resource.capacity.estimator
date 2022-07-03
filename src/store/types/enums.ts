@@ -3,3 +3,8 @@ export enum SystemRecommendationEnums {
   rec = "rec",
   max = "max",
 }
+export enum VirtualHardwareEnums {
+  vcpu = "vcpu",
+  vram = "vram",
+  vstorage = "vstorage",
+}

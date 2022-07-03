@@ -1,9 +1,21 @@
 <template>
-  <div class="flex flex-row space-x-2 bg-red-300 items-center" v-if="vm">
-    <p class="text-lg">{{ vm.name }}</p>
-    <p>{{ vm.vcpu[system_recommendation] }}</p>
-    <p>{{ vm.vram[system_recommendation] }}</p>
-    <p>{{ vm.vstorage[system_recommendation] }}</p>
+  <div class="flex flex-row w-full space-x-4 bg-red-300 items-center" v-if="vm">
+    <p class="text-lg w-full">{{ vm.name }}</p>
+    <div class="flex flex-row space-x-1">
+      <p>{{ vm.vcpu[system_recommendation] }}</p>
+      <i class="bi bi-cpu"></i>
+    </div>
+    <div class="flex flex-row space-x-1">
+      <p>{{ vm.vram[system_recommendation] }}</p>
+      <i class="bi bi-memory"></i>
+    </div>
+    <div class="flex flex-row space-x-1">
+      <p>{{ vm.vstorage[system_recommendation] }}</p>
+      <i class="bi bi-device-hdd"></i>
+    </div>
+    <button v-if="show_button" @click="$emit('clk_remove')" class="btn btn-xs">
+      <i class="bi bi-trash"></i>
+    </button>
   </div>
 </template>
 
@@ -13,6 +25,10 @@ import { VM } from "@/store/types/VM";
 import { SystemRecommendationEnums } from "@/store/types/enums";
 
 defineProps({
+  show_button: {
+    type: Boolean,
+    default: false,
+  },
   vm: {
     type: Object as PropType<VM>,
     default: undefined,

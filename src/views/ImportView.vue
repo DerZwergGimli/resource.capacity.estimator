@@ -11,12 +11,22 @@
         @input="loadFile($event.target.value)"
       />
     </div>
+    <file-pond
+      name="uploadJson"
+      ref="pond"
+      label-idle="Drop files here..."
+      v-bind:allow-multiple="false"
+      v-bind:files="uploadedFiles"
+      v-on:server="some"
+      v-on:init="handleFilePondInit"
+    />
   </div>
 </template>
 
 <script setup>
 import { createToast } from "mosha-vue-toastify";
 import { dataStore } from "@/store/DataStore";
+
 const data = dataStore();
 
 function loadFile(value) {
@@ -29,4 +39,32 @@ function loadFile(value) {
     createToast("Unable to load Data", { type: "danger" });
   }
 }
+</script>
+
+<script>
+import vueFilePond from "vue-filepond";
+import "filepond/dist/filepond.min.css";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+const FilePond = vueFilePond();
+
+export default {
+  data: function () {
+    return {
+      uploadedFiles: [],
+    };
+  },
+  methods: {
+    handleFilePondInit: function () {
+      console.info("FilePond has initialized");
+      // FilePond instance methods are available on `this.$refs.pond`
+    },
+    some: function () {
+      console.info("Found");
+      // FilePond instance methods are available on `this.$refs.pond`
+    },
+  },
+  components: {
+    FilePond,
+  },
+};
 </script>

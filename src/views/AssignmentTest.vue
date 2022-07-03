@@ -37,9 +37,15 @@
       </div>
     </div>
     <div class="divider lg:divider-horizontal">OR</div>
-    <div class="flex flex-grow card bg-base-300 rounded-box place-items-center">
+    <div
+      class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
+    >
       <SystemDimensioningTabs></SystemDimensioningTabs>
-      <div v-for="host_element in storage.hostsList" :key="host_element">
+      <div
+        class="space-y-2"
+        v-for="host_element in storage.hostsList"
+        :key="host_element"
+      >
         <div
           class="w-96 border-2 border-blue-600 drop-zone"
           @drop="on_drop($event, host_element_uuid)"
@@ -49,6 +55,7 @@
           :key="host_element_uuid"
         >
           <AssignmentHostElement
+            :host_uuid="host_element_uuid"
             :host="
               storage.hostsList.find((host) =>
                 host.uuids.find((uuid) => uuid === host_element_uuid)
@@ -76,15 +83,11 @@
                   )
                 "
                 :system_recommendation="storage.system_recommendation"
-              ></AssignmentVMElement>
-              <button
-                class="btn btn-xs"
-                @click="
+                :show_button="true"
+                @clk_remove="
                   btn_removeAssignment(host_element_uuid, assigned_vm_uuid)
                 "
-              >
-                X
-              </button>
+              ></AssignmentVMElement>
             </div>
           </div>
         </div>

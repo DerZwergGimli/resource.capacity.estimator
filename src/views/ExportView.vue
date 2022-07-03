@@ -3,7 +3,13 @@
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>Export</h1>
     </div>
-    <button class="btn m-4" @click="clk_download()">Download</button>
+    <button class="btn m-4" @click="clk_download()">
+      <div class="flex flex-row space-x-2">
+        <i class="bi bi-download"></i>
+        <div>Download</div>
+        <i class="bi bi-download"></i>
+      </div>
+    </button>
     <div class="mx-4 bg-base-300 p-2">
       <vue-json-pretty :path="'res'" :data="store.export()"></vue-json-pretty>
     </div>

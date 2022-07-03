@@ -7,9 +7,9 @@
           <th>ID</th>
           <th>Name</th>
           <th>Manufacturer</th>
-          <th>CPU</th>
-          <th>RAM</th>
-          <th>Storage</th>
+          <th>CPU <i class="bi bi-cpu"></i></th>
+          <th>RAM <i class="bi bi-memory"></i></th>
+          <th>Storage <i class="bi bi-device-hdd"></i></th>
           <th>Amount</th>
           <th></th>
         </tr>
