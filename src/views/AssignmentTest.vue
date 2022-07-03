@@ -61,6 +61,7 @@
                 host.uuids.find((uuid) => uuid === host_element_uuid)
               )
             "
+            :system_recommendation="storage.system_recommendation"
           ></AssignmentHostElement>
           <div
             v-if="

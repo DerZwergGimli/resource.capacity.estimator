@@ -3,6 +3,7 @@ import {
   VirtualHardwareEnums,
   SystemRecommendationEnums,
 } from "@/store/types/enums";
+import { SystemRecommendations, VM } from "@/store/types/VM";
 
 export function get_used_cpu(
   host_uuid: string,
@@ -22,7 +23,7 @@ export function get_used_cpu(
     resources_vms_array.push(
       storage.vmsList.find((vm) =>
         vm.uuids.find((uuid) => uuid === assignment_vm_uuid)
-      )?.vcpu.rec || 0
+      )?.[hardware_type][system_recommendation] ?? 0
     );
   }
 
