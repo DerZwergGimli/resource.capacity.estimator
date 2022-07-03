@@ -3,32 +3,39 @@ import { Host } from "@/store/types/Host";
 import { VM } from "@/store/types/VM";
 import { Assignment } from "@/store/types/Assignment";
 import { SystemRecommendationEnums } from "@/store/types/enums";
+import { useStorage } from "@vueuse/core";
 
 export const appStorage = defineStore({
   id: "app_storage",
   state: () => ({
-    initialized: 0,
-    hostsList: [] as Host[],
-    vmsList: [] as VM[],
-    assignmentsList: [] as Assignment[],
+    hostsList: useStorage("hostsList", [] as Host[]),
+    vmsList: useStorage("vmsList", [] as VM[]),
+    assignmentsList: useStorage("assignmentsList", [] as Assignment[]),
     system_recommendation: "rec" as SystemRecommendationEnums,
   }),
 
   actions: {
     async init() {
-      if (!this.initialized) {
+      if (
+        !this.hostsList.length ||
+        !this.vmsList.length ||
+        !this.assignmentsList.length
+      ) {
         console.info("Initializing AppStore!");
         await fetch("default/default_data.json")
           .then((response) => response.json())
           .then((data) => {
-            this.hostsList = data.hosts;
-            this.vmsList = data.vms;
-            this.assignmentsList = data.assignments;
+            this.hostsList = this.hostsList.length
+              ? this.hostsList
+              : data.hosts;
+            this.vmsList = this.vmsList.length ? this.vmsList : data.vms;
+            this.assignmentsList = this.assignmentsList.length
+              ? this.assignmentsList
+              : data.assignments;
           })
           .catch((error) => {
             console.error(error);
           });
-        this.initialized = 1;
       }
     },
     make_assignment(host_uuid: string, vm_uuid: string) {
