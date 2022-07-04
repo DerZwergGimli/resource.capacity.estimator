@@ -18,7 +18,7 @@
     <VMTable
       class="m-4"
       :vms="store.vmsList"
-      @clk_remove_item="(vm_id) => clk_removeItem(vm_id)"
+      @clk_remove_item="(vm_uuids) => store.remove_vm(vm_uuids)"
     ></VMTable>
     <div>
       <button class="btn" @click="clk_addVM()">Add VM</button>
@@ -31,14 +31,14 @@ import { calculate_total_hosts, calculate_total_vms } from "@/js/calculator";
 import VMTable from "@/components/table/VMTable.vue";
 import { uuid } from "vue-uuid";
 import { createToast } from "mosha-vue-toastify";
-import { defineComponent } from "vue";
+import { defineComponent, unref, watch } from "vue";
 import ValueCard from "@/components/special/ValueCard.vue";
 import { appStorage } from "@/store/AppStorage";
-const store = appStorage();
-
-store.init();
-
 defineComponent({ VMTable });
+
+const store = appStorage();
+store.init();
+//watch(store.vmsList, store.check_amount_uuids_length(unref(store.vmsList)));
 
 function clk_addVM() {
   store.vmsList.push({
@@ -46,7 +46,6 @@ function clk_addVM() {
     uuids: [uuid.v4()],
     name: "new_vm",
     os: "none",
-    amount: 0,
     vcpu: {
       min: 0,
       rec: 0,

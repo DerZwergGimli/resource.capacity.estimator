@@ -45,7 +45,7 @@
       "uuids": ["vm000_1", "vm000_2", "vm000_3", "vm000_4"],
       "name": "ES_Windows",
       "os": "Windows",
-      "amount": 2,
+      "amount": 4,
       "vcpu": {
         "min": 2,
         "rec": 4,

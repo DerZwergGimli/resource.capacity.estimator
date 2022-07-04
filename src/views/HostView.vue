@@ -18,7 +18,11 @@
         ></ValueCard>-->
       </div>
     </div>
-    <HostTable class="m-4" :hosts="store.hostsList"></HostTable>
+    <HostTable
+      class="m-4"
+      :hosts="store.hostsList"
+      @clk_remove_item="(uuids) => store.remove_host(uuids)"
+    ></HostTable>
     <div>
       <button class="btn" @click="clk_addHost()">Add Host</button>
     </div>
@@ -50,7 +54,7 @@ function clk_addHost() {
     uuids: [uuid.v4().toString()],
     name: "new_host",
     manufacturer: "no-name",
-    amount: 0,
+    amount: 1,
     cpu: { sockets: 0, cores: 0 },
     ram: { slots: 0, size: 0 },
     storage: { amount: 0, size: 0 },

@@ -3,7 +3,6 @@ export interface VM {
   uuids: string[];
   name: string;
   os: string;
-  amount: number;
   vcpu: SystemRecommendations;
   vram: SystemRecommendations;
   vstorage: SystemRecommendations;

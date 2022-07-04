@@ -16,7 +16,6 @@ export function get_used_cpu(
   const assigned_vm_uuids = storage.assignmentsList
     .filter((assignment) => assignment.host_uuid === host_uuid)
     .flatMap((assignment) => assignment.vm_uuid);
-  console.log("assigned_array: " + assigned_vm_uuids);
 
   const resources_vms_array: number[] = [];
   for (const assignment_vm_uuid of assigned_vm_uuids) {
@@ -26,8 +25,6 @@ export function get_used_cpu(
       )?.[hardware_type][system_recommendation] ?? 0
     );
   }
-
-  console.log("resouces_arry: " + resources_vms_array);
 
   return resources_vms_array.reduce((a, b) => {
     return a + b;

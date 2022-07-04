@@ -67,14 +67,21 @@
             <input
               class="input input-bordered input-xs w-full max-w-xs"
               type="number"
-              :value="host.amount"
-              @input="(event) => (host.amount = parseInt(event.target.value))"
+              :value="host.uuids.length"
+              @input="
+                (event) => {
+                  store.check_uuid_length(
+                    host.name,
+                    parseInt(event.target.value)
+                  );
+                }
+              "
             />
           </th>
           <th>
             <i
               class="btn btn-sm bi bi-trash"
-              @click="(host_uuid) => $emit('clk_remove_item', host_uuid)"
+              @click="$emit('clk_remove_item', host.uuids)"
             ></i>
           </th>
         </tr>
@@ -87,6 +94,9 @@
 import { defineProps, PropType } from "vue";
 import { Host } from "@/store/types/Host";
 import HostResources from "@/components/table/table_elements/HostResources.vue";
+import { appStorage } from "@/store/AppStorage";
+const store = appStorage();
+store.init();
 
 defineProps({
   hosts: {

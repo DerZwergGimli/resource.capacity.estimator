@@ -68,14 +68,21 @@
             <input
               class="input input-bordered input-xs w-full max-w-xs"
               type="number"
-              :value="vm.amount"
-              @input="(event) => (vm.amount = parseInt(event.target.value))"
+              :value="vm.uuids.length"
+              @input="
+                (event) => {
+                  store.check_uuid_length(
+                    vm.name,
+                    parseInt(event.target.value)
+                  );
+                }
+              "
             />
           </th>
           <th>
             <i
               class="btn btn-sm bi bi-trash"
-              @click="$emit('clk_remove_item', vm.uuid)"
+              @click="$emit('clk_remove_item', vm.uuids)"
             ></i>
           </th>
         </tr>
@@ -88,6 +95,10 @@
 import { defineProps, PropType } from "vue";
 import VMResources from "@/components/table/table_elements/VMResources.vue";
 import { VM } from "@/store/types/VM";
+import { appStorage } from "@/store/AppStorage";
+
+const store = appStorage();
+store.init();
 
 defineProps({
   vms: {

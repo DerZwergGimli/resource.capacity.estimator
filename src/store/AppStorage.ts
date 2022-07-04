@@ -4,10 +4,12 @@ import { VM } from "@/store/types/VM";
 import { Assignment } from "@/store/types/Assignment";
 import { SystemRecommendationEnums } from "@/store/types/enums";
 import { useStorage } from "@vueuse/core";
+import { uuid } from "vue-uuid";
 
 export const appStorage = defineStore({
   id: "app_storage",
   state: () => ({
+    initalized: useStorage("data_initalized", false),
     hostsList: useStorage("hostsList", [] as Host[]),
     vmsList: useStorage("vmsList", [] as VM[]),
     assignmentsList: useStorage("assignmentsList", [] as Assignment[]),
@@ -16,26 +18,31 @@ export const appStorage = defineStore({
 
   actions: {
     async init() {
-      if (
-        !this.hostsList.length ||
-        !this.vmsList.length ||
-        !this.assignmentsList.length
-      ) {
+      if (!this.initalized) {
+        // if (
+        //   !this.hostsList.length ||
+        //   !this.vmsList.length ||
+        //   !this.assignmentsList.length
+        // ) {
         console.info("Initializing AppStore!");
         await fetch("default/default_data.json")
           .then((response) => response.json())
           .then((data) => {
-            this.hostsList = this.hostsList.length
-              ? this.hostsList
-              : data.hosts;
-            this.vmsList = this.vmsList.length ? this.vmsList : data.vms;
-            this.assignmentsList = this.assignmentsList.length
-              ? this.assignmentsList
-              : data.assignments;
+            this.hostsList =
+              this.hostsList.length == data.hosts.length
+                ? this.hostsList
+                : data.hosts;
+            this.vmsList =
+              this.vmsList.length == data.vms ? this.vmsList : data.vms;
+            this.assignmentsList =
+              this.assignmentsList.length == data.assignments
+                ? this.assignmentsList
+                : data.assignments;
           })
           .catch((error) => {
             console.error(error);
           });
+        this.initalized = true;
       }
     },
     make_assignment(host_uuid: string, vm_uuid: string) {
@@ -75,6 +82,73 @@ export const appStorage = defineStore({
           .find((assignment) => assignment.host_uuid === host_uuid)
           ?.vm_uuid.splice(index_to_remove, 1);
       }
+    },
+    remove_host(host_uuids: string[]) {
+      console.info("Removing hosts form lists");
+      this.hostsList = this.hostsList.filter((host) => {
+        return host.uuids !== host_uuids;
+      });
+      this.assignmentsList = this.assignmentsList.filter((assignment) => {
+        return !host_uuids.includes(assignment.host_uuid);
+      });
+    },
+    remove_vm(vm_uuids: string[]) {
+      console.info("Removing hosts form lists");
+      this.vmsList = this.vmsList.filter((vm) => {
+        return vm.uuids !== vm_uuids;
+      });
+      // this.assignmentsList = this.assignmentsList.filter((assignment) => {
+      //   return !assignment.vm_uuid.some() vm_uuids.includes();
+      // });
+    },
+    check_uuid_length(object_name: string, should: number) {
+      console.info(
+        "Checking UUIDs for ObjectName: " + object_name + " should: " + should
+      );
+      this.vmsList.forEach((vm) => {
+        if (should - vm.uuids.length > 0) {
+          for (let i = 0; i < should - vm.uuids.length; i++) {
+            vm.uuids.push(uuid.v4());
+          }
+        }
+        if (vm.uuids.length - should > 0) {
+          for (let i = 0; i < vm.uuids.length - should; i++) {
+            vm.uuids.pop();
+          }
+        }
+      });
+      this.hostsList.forEach((host) => {
+        if (should - host.uuids.length > 0) {
+          for (let i = 0; i < should - host.uuids.length; i++) {
+            host.uuids.push(uuid.v4());
+          }
+        }
+        if (host.uuids.length - should > 0) {
+          for (let i = 0; i < host.uuids.length - should; i++) {
+            host.uuids.pop();
+          }
+        }
+      });
+    },
+    // add_uuid(object_name: string) {
+    //   console.info("Adding new UUID to: " + object_name);
+
+    //   this.vmsList.forEach((vm) =>
+    //     vm.name === object_name ? vm.uuids.push(uuid.v4()) : false
+    //   );
+    // },
+    // remove_uuid(object_name: string) {
+    //   console.info("Remving last UUID of: " + object_name);
+
+    //   this.vmsList.forEach((vm) =>
+    //     vm.name === object_name ? vm.uuids.pop() : false
+    //   );
+    // },
+    import(hosts: Host[], vms: VM[], assignments: Assignment[]) {
+      console.log(hosts);
+      this.hostsList = hosts;
+      this.vmsList = vms;
+      this.assignmentsList = assignments;
     },
     export() {
       return {

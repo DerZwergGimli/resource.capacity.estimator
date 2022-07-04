@@ -2,7 +2,6 @@ export interface Host {
   id: number;
   uuids: string[];
   name: string;
-  amount: number;
   manufacturer: string;
   cpu: CPU;
   ram: RAM;

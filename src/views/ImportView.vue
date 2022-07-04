@@ -4,67 +4,59 @@
       <h1>IMPORT</h1>
     </div>
     <div class="mx-4">
-      <input
+      <!-- <input
         type="text"
         placeholder="Type here"
         class="input input-bordered input-primary w-full max-w-xs"
         @input="loadFile($event.target.value)"
-      />
+      /> -->
+      <input type="file" @change="evt_uploadFile" />
     </div>
-    <file-pond
-      name="uploadJson"
-      ref="pond"
-      label-idle="Drop files here..."
-      v-bind:allow-multiple="false"
-      v-bind:files="uploadedFiles"
-      v-on:server="some"
-      v-on:init="handleFilePondInit"
-    />
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { createToast } from "mosha-vue-toastify";
-import { dataStore } from "@/store/DataStore";
+import { appStorage } from "@/store/AppStorage";
+import { Host } from "@/store/types/Host";
+import { VM } from "@/store/types/VM";
+import { Assignment } from "@/store/types/Assignment";
 
-const data = dataStore();
+const storage = appStorage();
+storage.init();
 
-function loadFile(value) {
-  try {
-    JSON.parse(value);
-    data.import(JSON.parse(value));
-    createToast("Data Imported", { type: "success" });
-  } catch {
-    console.log(".");
-    createToast("Unable to load Data", { type: "danger" });
-  }
+function evt_uploadFile(event: any) {
+  console.info("Loading uploaded file...");
+
+  let reader = new FileReader();
+  reader.readAsText(event.target.files[0]);
+
+  reader.onload = function () {
+    console.log(typeof reader.result);
+    let json_data: { hosts: Host[]; vms: VM[]; assignments: Assignment[] } =
+      JSON.parse(JSON.stringify(reader.result));
+    console.log(typeof json_data);
+    storage.import(json_data.hosts, json_data.vms, json_data.assignments);
+    createToast("Data imported from File", { type: "success" });
+    console.info("...Imported!");
+  };
+
+  reader.onerror = function () {
+    createToast("Error loading file content (check console)", {
+      type: "danger",
+    });
+    console.error(reader.error);
+  };
 }
-</script>
 
-<script>
-import vueFilePond from "vue-filepond";
-import "filepond/dist/filepond.min.css";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
-const FilePond = vueFilePond();
-
-export default {
-  data: function () {
-    return {
-      uploadedFiles: [],
-    };
-  },
-  methods: {
-    handleFilePondInit: function () {
-      console.info("FilePond has initialized");
-      // FilePond instance methods are available on `this.$refs.pond`
-    },
-    some: function () {
-      console.info("Found");
-      // FilePond instance methods are available on `this.$refs.pond`
-    },
-  },
-  components: {
-    FilePond,
-  },
-};
+// function loadFile(value) {
+//   try {
+//     JSON.parse(value);
+//     data.import(JSON.parse(value));
+//     createToast("Data Imported", { type: "success" });
+//   } catch {
+//     console.log(".");
+//     createToast("Unable to load Data", { type: "danger" });
+//   }
+// }
 </script>
