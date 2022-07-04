@@ -42,6 +42,7 @@
               @changed_rec="(value) => (vm.vcpu.rec = parseInt(value))"
               :max="vm.vcpu.max"
               @changed_max="(value) => (vm.vcpu.max = parseInt(value))"
+              type="cpu"
             ></VMResources>
           </th>
           <th>
@@ -52,6 +53,7 @@
               @changed_rec="(value) => (vm.vram.rec = parseInt(value))"
               :max="vm.vram.max"
               @changed_max="(value) => (vm.vram.max = parseInt(value))"
+              type="ram"
             ></VMResources>
           </th>
           <th>
@@ -62,22 +64,27 @@
               @changed_rec="(value) => (vm.vstorage.rec = parseInt(value))"
               :max="vm.vstorage.max"
               @changed_max="(value) => (vm.vstorage.max = parseInt(value))"
+              type="storage"
             ></VMResources>
           </th>
           <th>
-            <input
-              class="input input-bordered input-xs w-full max-w-xs"
-              type="number"
-              :value="vm.uuids.length"
-              @input="
-                (event) => {
-                  store.check_uuid_length(
-                    vm.name,
-                    parseInt(event.target.value)
-                  );
-                }
-              "
-            />
+            <label class="input-group input-group-xs">
+              <span class="">Total</span>
+              <input
+                class="input input-bordered input-xs w-full max-w-xs"
+                type="number"
+                :value="vm.uuids.length"
+                @input="
+                  (event) => {
+                    store.check_uuid_length(
+                      vm.name,
+                      parseInt(event.target.value)
+                    );
+                  }
+                "
+              />
+              <span>#</span>
+            </label>
           </th>
           <th>
             <i

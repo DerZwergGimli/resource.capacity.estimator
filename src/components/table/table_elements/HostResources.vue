@@ -9,7 +9,7 @@
           : 'bi bi-device-hdd'
       "
     ></i>
-    <div class="grid grid-cols-2 gap-x-1">
+    <div class="grid grid-cols-2 gap-x-1 space-y-1">
       <input
         class="input input-bordered input-xs w-full max-w-xs"
         type="number"

@@ -106,26 +106,31 @@ export const appStorage = defineStore({
         "Checking UUIDs for ObjectName: " + object_name + " should: " + should
       );
       this.vmsList.forEach((vm) => {
-        if (should - vm.uuids.length > 0) {
-          for (let i = 0; i < should - vm.uuids.length; i++) {
-            vm.uuids.push(uuid.v4());
+        if (vm.name === object_name) {
+          if (should - vm.uuids.length > 0) {
+            for (let i = 0; i < should - vm.uuids.length; i++) {
+              vm.uuids.push(uuid.v4());
+            }
           }
-        }
-        if (vm.uuids.length - should > 0) {
-          for (let i = 0; i < vm.uuids.length - should; i++) {
-            vm.uuids.pop();
+          if (vm.uuids.length - should > 0) {
+            for (let i = 0; i < vm.uuids.length - should; i++) {
+              vm.uuids.pop();
+            }
           }
         }
       });
+
       this.hostsList.forEach((host) => {
-        if (should - host.uuids.length > 0) {
-          for (let i = 0; i < should - host.uuids.length; i++) {
-            host.uuids.push(uuid.v4());
+        if (host.name === object_name) {
+          if (should - host.uuids.length > 0) {
+            for (let i = 0; i < should - host.uuids.length; i++) {
+              host.uuids.push(uuid.v4());
+            }
           }
-        }
-        if (host.uuids.length - should > 0) {
-          for (let i = 0; i < host.uuids.length - should; i++) {
-            host.uuids.pop();
+          if (host.uuids.length - should > 0) {
+            for (let i = 0; i < host.uuids.length - should; i++) {
+              host.uuids.pop();
+            }
           }
         }
       });

@@ -9,6 +9,9 @@
         :value="min"
         @input="(event) => $emit('changed_min', event.target.value)"
       />
+      <span class="">
+        {{ type === "cpu" ? "Cores" : "GB" }}
+      </span>
     </label>
 
     <label class="input-group input-group-xs">
@@ -20,6 +23,9 @@
         :value="rec"
         @input="(event) => $emit('changed_rec', event.target.value)"
       />
+      <span>
+        {{ type === "cpu" ? "Cores" : "GB" }}
+      </span>
     </label>
 
     <label class="input-group input-group-xs">
@@ -31,6 +37,9 @@
         :value="max"
         @input="(event) => $emit('changed_max', event.target.value)"
       />
+      <span class="">
+        {{ type === "cpu" ? "Cores" : "GB" }}
+      </span>
     </label>
   </div>
 </template>
@@ -39,6 +48,10 @@
 import { defineProps } from "vue";
 
 defineProps({
+  type: {
+    type: String,
+    default: "none",
+  },
   min: {
     type: Number,
     default: 0,

@@ -6,6 +6,9 @@
     data-toggle-theme="dark,light"
     data-act-class="ACTIVECLASS"
   />
+  <button>
+    <i class="bi bi-brightness-high"></i>
+  </button>
 </template>
 
 <script setup>

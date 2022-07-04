@@ -30,18 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import { calculate_total_hosts, calculate_total_vms } from "@/js/calculator";
 import { uuid } from "vue-uuid";
 import HostTable from "@/components/table/HostTable.vue";
 import { createToast } from "mosha-vue-toastify";
 import { appStorage } from "@/store/AppStorage";
 import { defineComponent } from "vue";
-import {
-  AppDataHostsCpu,
-  AppDataHostsRam,
-  AppDataHostsStorage,
-} from "@/js/types/data-types";
-import ValueCard from "@/components/special/ValueCard.vue";
 const store = appStorage();
 
 store.init();

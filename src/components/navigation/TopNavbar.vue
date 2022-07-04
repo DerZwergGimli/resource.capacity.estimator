@@ -13,7 +13,7 @@
         <li><router-link to="/host">Host</router-link></li>
         <li><router-link to="/vm">VM</router-link></li>
         <li><router-link to="/assign">Assignment</router-link></li>
-
+        <li><router-link to="/overview">Overview</router-link></li>
         <li><router-link to="/printout">Print</router-link></li>
         <li><router-link to="/about">About</router-link></li>
         <li><router-link to="/test">TEST</router-link></li>

@@ -2,9 +2,7 @@
   <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
     <h1>Assignment</h1>
   </div>
-  <button class="btn m-4" @click="console.log('Not implemeneted')">
-    Reset
-  </button>
+  <button class="btn m-4" @click="btn_clearAllAssignments()">Reset</button>
   <div class="flex flex-col w-full m-4 lg:flex-row">
     <div
       class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
@@ -127,12 +125,17 @@ function on_dragStart(event, vm_uuid) {
 
 function on_drop(event, host_uuid) {
   const vm_uuid = event.dataTransfer.getData("vm_uuid");
-
-  storage.make_assignment(host_uuid, vm_uuid);
+  if (host_uuid && vm_uuid) {
+    storage.make_assignment(host_uuid, vm_uuid);
+  }
 }
 
 function btn_removeAssignment(host_uuid, vm_uuid) {
   storage.remove_assignment(host_uuid, vm_uuid);
+}
+
+function btn_clearAllAssignments() {
+  storage.assignmentsList = [];
 }
 </script>
 
