@@ -2,6 +2,9 @@
   <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
     <h1>Assignment</h1>
   </div>
+  <button class="btn m-4" @click="console.log('Not implemeneted')">
+    Reset
+  </button>
   <div class="flex flex-col w-full m-4 lg:flex-row">
     <div
       class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
