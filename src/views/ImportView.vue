@@ -28,17 +28,16 @@ storage.init();
 function evt_uploadFile(event: any) {
   console.info("Loading uploaded file...");
 
-  let reader = new FileReader();
-  reader.readAsText(event.target.files[0]);
+  const blob = new Blob([event.target.files[0]], { type: "application/json" });
 
-  reader.onload = function () {
-    console.log(typeof reader.result);
-    let json_data: { hosts: Host[]; vms: VM[]; assignments: Assignment[] } =
-      JSON.parse(JSON.stringify(reader.result));
-    console.log(typeof json_data);
-    storage.import(json_data.hosts, json_data.vms, json_data.assignments);
+  let reader = new FileReader();
+
+  reader.onloadend = function () {
+    const data_string = reader.result?.toString();
+    const data_json = JSON.parse(JSON.parse(JSON.stringify(data_string)));
+    storage.import(data_json.hosts, data_json.vms, data_json.assignments);
     createToast("Data imported from File", { type: "success" });
-    console.info("...Imported!");
+    // console.info("...Imported!");
   };
 
   reader.onerror = function () {
@@ -47,6 +46,8 @@ function evt_uploadFile(event: any) {
     });
     console.error(reader.error);
   };
+
+  reader.readAsText(blob);
 }
 
 // function loadFile(value) {
