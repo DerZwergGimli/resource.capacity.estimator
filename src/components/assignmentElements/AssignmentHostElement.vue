@@ -1,47 +1,86 @@
 <template>
-  <div class="flex flex-row space-x-2 items-center" v-if="host">
-    <p class="text-lg">{{ host.name }}</p>
+  <div class="flex flex-col" v-if="host">
     <div class="flex flex-row">
-      <i class="bi bi-cpu"></i>
-      <p>
-        {{
-          get_used_cpu(
-            host_uuid,
-            VirtualHardwareEnums.vcpu,
-            system_recommendation
-          )
-        }}
-      </p>
-      /
-      <p>{{ host.cpu.sockets * host.cpu.cores }}</p>
-    </div>
-    <div class="flex flex-row">
-      <i class="bi bi-memory"></i>
-      <p>
-        {{
-          get_used_cpu(
-            host_uuid,
-            VirtualHardwareEnums.vram,
-            system_recommendation
-          )
-        }}
-      </p>
-      /
-      <p>{{ host.ram.slots * host.ram.size }}</p>
-    </div>
-    <div class="flex flex-row">
-      <i class="bi bi-device-hdd"></i>
-      <p>
-        {{
-          get_used_cpu(
-            host_uuid,
-            VirtualHardwareEnums.vstorage,
-            system_recommendation
-          )
-        }}
-      </p>
-      /
-      <p>{{ host.storage.amount * host.storage.size }}</p>
+      <div class="basis-1/2">
+        <p class="text-lg">{{ host.name }}</p>
+      </div>
+      <div class="basis-1/2 mr-2">
+        <div class="flex flex-row">
+          <i class="bi bi-cpu"></i>
+          <progress
+            class="progress mt-2 mx-1"
+            :value="
+              get_used_cpu(
+                host_uuid,
+                VirtualHardwareEnums.vcpu,
+                system_recommendation
+              )
+            "
+            :max="host.cpu.sockets * host.cpu.cores"
+          ></progress>
+          <p>
+            {{
+              get_used_cpu(
+                host_uuid,
+                VirtualHardwareEnums.vcpu,
+                system_recommendation
+              )
+            }}
+          </p>
+          /
+          <p>{{ host.cpu.sockets * host.cpu.cores }}</p>
+        </div>
+        <div class="flex flex-row">
+          <i class="bi bi-memory"></i>
+          <progress
+            class="progress mt-2 mx-1"
+            :value="
+              get_used_cpu(
+                host_uuid,
+                VirtualHardwareEnums.vram,
+                system_recommendation
+              )
+            "
+            :max="host.ram.slots * host.ram.size"
+          ></progress>
+          <p>
+            {{
+              get_used_cpu(
+                host_uuid,
+                VirtualHardwareEnums.vram,
+                system_recommendation
+              )
+            }}
+          </p>
+          /
+          <p>{{ host.ram.slots * host.ram.size }}</p>
+        </div>
+        <div class="flex flex-row">
+          <i class="bi bi-device-hdd"></i>
+          <progress
+            class="progress mt-2 mx-1"
+            :value="
+              get_used_cpu(
+                host_uuid,
+                VirtualHardwareEnums.vstorage,
+                system_recommendation
+              )
+            "
+            :max="host.storage.amount * host.storage.size"
+          ></progress>
+          <p>
+            {{
+              get_used_cpu(
+                host_uuid,
+                VirtualHardwareEnums.vstorage,
+                system_recommendation
+              )
+            }}
+          </p>
+          /
+          <p class="">{{ host.storage.amount * host.storage.size }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
