@@ -5,7 +5,9 @@
       <input
         type="number"
         placeholder="Type here"
-        class="input input-bordered input-xs"
+        :class="
+          'input input-bordered input-xs' + (min == 0 ? ' input-error' : '')
+        "
         :value="min"
         @input="(event) => $emit('changed_min', event.target.value)"
       />
@@ -19,7 +21,9 @@
       <input
         type="number"
         placeholder="Type here"
-        class="input input-bordered input-xs"
+        :class="
+          'input input-bordered input-xs' + (rec == 0 ? ' input-error' : '')
+        "
         :value="rec"
         @input="(event) => $emit('changed_rec', event.target.value)"
       />
@@ -33,7 +37,9 @@
       <input
         type="number"
         placeholder="Type here"
-        class="input input-bordered input-xs"
+        :class="
+          'input input-bordered input-xs' + (max == 0 ? ' input-error' : '')
+        "
         :value="max"
         @input="(event) => $emit('changed_max', event.target.value)"
       />

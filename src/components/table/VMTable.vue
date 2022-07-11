@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <!-- body -->
-        <tr v-for="(vm, index) in vms" :key="vm">
+        <tr v-for="(vm, index) in vms" :key="index">
           <th>{{ index }}</th>
           <th>
             <input
@@ -71,7 +71,10 @@
             <label class="input-group input-group-xs">
               <span class="">Total</span>
               <input
-                class="input input-bordered input-xs w-full max-w-xs"
+                :class="
+                  'input input-bordered input-xs' +
+                  (vm.uuids.length == 0 ? ' input-error' : '')
+                "
                 type="number"
                 :value="vm.uuids.length"
                 @input="
