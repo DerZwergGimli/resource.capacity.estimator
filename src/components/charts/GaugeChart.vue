@@ -1,6 +1,11 @@
 <template>
-  <div id="chart">
+  <div id="chart" class="flex flex-col">
     <p>{{ name }}</p>
+    <div class="flex flex-row justify-center">
+      <p>{{ used }}</p>
+      <p class="px-2">of</p>
+      <p>{{ total }}</p>
+    </div>
     <apexchart
       type="radialBar"
       :options="chartOptions"
@@ -12,16 +17,22 @@
 <script setup>
 import { defineProps } from "vue";
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     default: "None",
   },
-  value: {
-    type: [],
-    default: [0],
+  used: {
+    type: Number,
+    default: 0,
+  },
+  total: {
+    type: Number,
+    default: 0,
   },
 });
+
+const value = [((props.used / props.total) * 100).toFixed(1)];
 </script>
 
 <script>
