@@ -1,16 +1,40 @@
 <template>
   <div class="border-2 rounded-tr-xl rounded-bl-xl border-cyan-800 w-full">
-    <div>
-      {{
-        storage.hostsList.find((host) =>
-          host.uuids.includes(assignment?.host_uuid ?? "none")
-        )?.name ?? "error"
-      }}
-    </div>
+    <div></div>
     <div class="flex flex-row">
-      <GaugeChart name="CPU" :value="[10]"></GaugeChart>
-      <GaugeChart name="RAM" :value="[10]"></GaugeChart>
-      <GaugeChart name="Storage" :value="[10]"></GaugeChart>
+      <GaugeChart
+        name="CPU"
+        :used="
+          get_used_resouce(
+            assignment?.host_uuid ?? 'none',
+            VirtualHardwareEnums.vcpu,
+            storage.system_recommendation
+          )
+        "
+        :total="find_host_CPU_total(assignment?.host_uuid ?? 'none')"
+      ></GaugeChart>
+      <GaugeChart
+        name="RAM"
+        :used="
+          get_used_resouce(
+            assignment?.host_uuid ?? 'none',
+            VirtualHardwareEnums.vram,
+            storage.system_recommendation
+          )
+        "
+        :total="find_host_RAM_total(assignment?.host_uuid ?? 'none')"
+      ></GaugeChart>
+      <GaugeChart
+        name="Storage"
+        :used="
+          get_used_resouce(
+            assignment?.host_uuid ?? 'none',
+            VirtualHardwareEnums.vstorage,
+            storage.system_recommendation
+          )
+        "
+        :total="find_host_Storage_total(assignment?.host_uuid ?? 'none')"
+      ></GaugeChart>
     </div>
     <table class="table table-compact w-full">
       <thead>
@@ -65,6 +89,17 @@ import { defineProps, PropType } from "vue";
 import { Assignment } from "@/store/types/Assignment";
 import { appStorage } from "@/store/AppStorage";
 import GaugeChart from "../charts/GaugeChart.vue";
+import {
+  find_host_CPU_total,
+  find_host_RAM_total,
+  find_host_Storage_total,
+} from "@/extra/finder";
+import { get_used_resouce } from "@/extra/calculator";
+
+import {
+  VirtualHardwareEnums,
+  SystemRecommendationEnums,
+} from "@/store/types/enums";
 
 const storage = appStorage();
 storage.init();

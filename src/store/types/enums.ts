@@ -8,3 +8,9 @@ export enum VirtualHardwareEnums {
   vram = "vram",
   vstorage = "vstorage",
 }
+
+export enum HardwareEnums {
+  cpu = "cpu",
+  ram = "ram",
+  storage = "storage",
+}
