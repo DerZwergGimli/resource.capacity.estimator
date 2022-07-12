@@ -7,14 +7,19 @@
         )?.name ?? "error"
       }}
     </div>
+    <div class="flex flex-row">
+      <GaugeChart name="CPU" :value="[10]"></GaugeChart>
+      <GaugeChart name="RAM" :value="[10]"></GaugeChart>
+      <GaugeChart name="Storage" :value="[10]"></GaugeChart>
+    </div>
     <table class="table table-compact w-full">
       <thead>
         <tr>
           <th></th>
           <th>VM-Name</th>
-          <th class="text-right">CPU</th>
-          <th class="text-right">RAM</th>
-          <th class="text-right">Storage</th>
+          <th class="w-8 text-right">CPU</th>
+          <th class="w-8 text-right">RAM</th>
+          <th class="w-8 text-right">Storage</th>
         </tr>
       </thead>
       <tbody>
@@ -59,6 +64,7 @@
 import { defineProps, PropType } from "vue";
 import { Assignment } from "@/store/types/Assignment";
 import { appStorage } from "@/store/AppStorage";
+import GaugeChart from "../charts/GaugeChart.vue";
 
 const storage = appStorage();
 storage.init();
