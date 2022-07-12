@@ -1,7 +1,7 @@
 <template>
-  <div id="chart" class="flex flex-col">
+  <div id="chart" class="flex flex-col bg-base-200 m-2 rounded-lg">
     <p>{{ name }}</p>
-    <div class="flex flex-row justify-center">
+    <div class="flex flex-row justify-center pb-2">
       <p>{{ used }}</p>
       <p class="px-2">of</p>
       <p>{{ total }}</p>

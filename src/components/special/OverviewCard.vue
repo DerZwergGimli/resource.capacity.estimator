@@ -1,8 +1,15 @@
 <template>
-  <div class="border-2 rounded-tr-xl rounded-bl-xl border-cyan-800 w-full">
-    <div></div>
-    <div class="flex flex-row">
+  <div class="border-2 rounded-lg border-cyan-800 w-full">
+    <div class="underline text-2xl p-2 bg-base-300">
+      {{
+        storage.hostsList.find((host) =>
+          host.uuids.includes(assignment?.host_uuid)
+        ).name
+      }}
+    </div>
+    <div class="flex xl:flex-row flex-col justify-evenly">
       <GaugeChart
+        class="w-64"
         name="CPU"
         :used="
           get_used_resouce(
@@ -14,6 +21,7 @@
         :total="find_host_CPU_total(assignment?.host_uuid ?? 'none')"
       ></GaugeChart>
       <GaugeChart
+        class="w-64"
         name="RAM"
         :used="
           get_used_resouce(
@@ -25,6 +33,7 @@
         :total="find_host_RAM_total(assignment?.host_uuid ?? 'none')"
       ></GaugeChart>
       <GaugeChart
+        class="w-64"
         name="Storage"
         :used="
           get_used_resouce(
