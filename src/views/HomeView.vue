@@ -4,17 +4,20 @@
       <h1>Home</h1>
     </div>
     <div class="flex flex-row justify-center space-x-2">
-      <p class="basis-1/2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Euismod elementum
-        nisi quis eleifend quam. Cursus eget nunc scelerisque viverra mauris in
-        aliquam. Aliquam faucibus purus in massa. Id donec ultrices tincidunt
-        arcu non sodales neque. Sagittis id consectetur purus ut faucibus
-        pulvinar elementum. Tincidunt eget nullam non nisi est. Et malesuada
-        fames ac turpis egestas integer eget aliquet. Scelerisque eleifend donec
-        pretium vulputate sapien nec. Neque viverra justo nec ultrices dui
-        sapien eget mi. Lacinia at quis risus sed vulputate odio ut enim.
-      </p>
+      <ul class="basis-1/2 steps steps-vertical">
+        <li class="step step-primary">
+          'Import' your own config or use the default
+        </li>
+        <li class="step step-primary">
+          Check you imported config in the export section
+        </li>
+        <li class="step step-primary">Modfiy your Hosts in the Host section</li>
+        <li class="step step-primary">Modfiy your VMs in the Host section</li>
+        <li class="step step-primary">Assign your VMs to the Hosts</li>
+        <li class="step step-primary">
+          View your Assignments in the Ovewview section
+        </li>
+      </ul>
       <img
         class="object-contain w-96 rounded-md shadow-lg"
         src="@/assets/datacenter.jpg"
