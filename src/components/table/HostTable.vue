@@ -46,7 +46,7 @@
             <div class="flex flex-row space-x-2">
               <i class="bi bi-calculator"></i>
               <p class="text-sm pt-1">
-                vCores = {{ host.cpu.sockets * host.cpu.cores }} Cores
+                {{ host.cpu.sockets * host.cpu.cores }} vCores
               </p>
             </div>
           </th>
@@ -61,7 +61,7 @@
             <div class="flex flex-row space-x-2">
               <i class="bi bi-calculator"></i>
               <p class="text-sm pt-1">
-                vRAM = {{ host.ram.slots * host.ram.size }} GB
+                {{ host.ram.slots * host.ram.size }} vRAM [GB]
               </p>
             </div>
           </th>
