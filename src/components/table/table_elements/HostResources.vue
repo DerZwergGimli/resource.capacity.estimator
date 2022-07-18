@@ -1,34 +1,56 @@
 <template>
-  <div class="flex flex-row space-x-2">
-    <i
-      :class="
-        type === 'cpu'
-          ? 'bi bi-cpu'
-          : type === 'ram'
-          ? 'bi bi-memory'
-          : 'bi bi-device-hdd'
-      "
-    ></i>
-    <div class="grid grid-cols-2 gap-x-1 space-y-1">
+  <div class="space-y-1 form-control">
+    <label class="input-group input-group-xs">
+      <span class="w-14"
+        ><i
+          :class="
+            type === 'cpu'
+              ? 'bi bi-cpu'
+              : type === 'ram'
+              ? 'bi bi-memory'
+              : 'bi bi-device-hdd'
+          "
+        ></i
+      ></span>
       <input
-        class="input input-bordered input-xs w-full max-w-xs"
+        :class="
+          'input input-bordered input-xs w-full max-w-xs' +
+          (first_value == 0 ? ' input-error' : '')
+        "
         type="number"
         :value="first_value"
         @input="(event) => $emit('changed_first', event.target.value)"
       />
-      <p class="text-xs pt-1">
+      <span class="w-32">
         {{ type === "cpu" ? "Sockets" : type === "ram" ? "Slots" : "Slots" }}
-      </p>
+      </span>
+    </label>
+
+    <label class="input-group input-group-xs">
+      <span class="w-14"
+        ><i
+          :class="
+            type === 'cpu'
+              ? 'bi bi-cpu'
+              : type === 'ram'
+              ? 'bi bi-memory'
+              : 'bi bi-device-hdd'
+          "
+        ></i
+      ></span>
       <input
-        class="input input-bordered input-xs w-full max-w-xs"
+        :class="
+          'input input-bordered input-xs w-full max-w-xs' +
+          (second_value == 0 ? ' input-error' : '')
+        "
         type="number"
         :value="second_value"
         @input="(event) => $emit('changed_second', event.target.value)"
       />
-      <p class="text-xs pt-1">
+      <span class="w-32">
         {{ type === "cpu" ? "Cores" : type === "ram" ? "GB" : "GB" }}
-      </p>
-    </div>
+      </span>
+    </label>
   </div>
 </template>
 

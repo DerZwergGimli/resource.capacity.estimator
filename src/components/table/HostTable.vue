@@ -7,7 +7,6 @@
           <th>ID</th>
           <th>Name</th>
           <th>Manufacturer</th>
-          <th>Preset</th>
           <th>CPU <i class="bi bi-cpu"></i></th>
           <th>RAM <i class="bi bi-memory"></i></th>
           <th>Storage <i class="bi bi-device-hdd"></i></th>
@@ -34,14 +33,6 @@
               :value="host.manufacturer"
               @input="(event) => (host.manufacturer = event.target.value)"
             />
-          </th>
-          <th>
-            <select class="select select-bordered select-xs w-full max-w-xs">
-              <option disabled selected>A</option>
-              <option>B</option>
-              <option>C</option>
-              <option>D</option>
-            </select>
           </th>
           <th>
             <HostResources
@@ -71,6 +62,12 @@
               "
               @changed_second="(value) => (host.storage.size = parseInt(value))"
             ></HostResources>
+            <select class="select select-bordered select-xs max-w-xs">
+              <option disabled selected>A</option>
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+            </select>
           </th>
           <th>
             <input
@@ -113,4 +110,10 @@ defineProps({
     default: null,
   },
 });
+</script>
+
+<script lang="ts">
+export default {
+  name: "HostTable",
+};
 </script>
