@@ -82,6 +82,39 @@
         </div>
       </div>
     </div>
+
+    <div class="flex flex-row">
+      <div class="basis-1/3"></div>
+      <div class="flex flex-row">
+        <div class="flex flex-col">
+          <i class="bi bi-cpu self-center"></i>
+          <div
+            class="radial-progress text-primary self-center"
+            style="--value: 70"
+          >
+            70%
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <i class="bi bi-memory self-center"></i>
+          <div
+            class="radial-progress text-primary self-center"
+            style="--value: 70"
+          >
+            70%
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <i class="bi bi-device-hdd self-center"></i>
+          <div
+            class="radial-progress text-primary self-center"
+            style="--value: 70"
+          >
+            70%
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

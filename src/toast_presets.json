@@ -9,7 +9,8 @@
     "color": "#FFFFFF",
     "show_progress_timeout": "true",
     "progress_background": "#5a9fdc",
-    "progress_thumb_bg": "rgba(32,105,156,.9)"
+    "progress_thumb_bg": "rgba(32,105,156,.9)",
+    "position": "bottom-right"
   },
 
   {
@@ -22,6 +23,7 @@
     "color": "#FFFFFF",
     "show_progress_timeout": "true",
     "progress_background": "rgb(255 175 175)",
-    "progress_thumb_bg": "#ff1e1e"
+    "progress_thumb_bg": "#ff1e1e",
+    "position": "bottom-right"
   }
 ]

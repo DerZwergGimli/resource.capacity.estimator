@@ -141,7 +141,7 @@ function btn_clearAllAssignments() {
 
 <script>
 export default {
-  name: "AssignmentTest",
+  name: "AssignmentView",
 };
 </script>
 

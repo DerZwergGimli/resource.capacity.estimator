@@ -20,7 +20,9 @@ import HostTable from "@/components/table/HostTable.vue";
 import { createToast } from "mosha-vue-toastify";
 import { appStorage } from "@/store/AppStorage";
 import { defineComponent } from "vue";
-import { RAIDCONST, RAIDEnums } from "@/store/types/enums";
+import { RAIDEnums } from "@/store/types/enums";
+import { TOAST_SUCCESS } from "@/extra/toast-config";
+
 const store = appStorage();
 
 store.init();
@@ -33,7 +35,7 @@ function clk_addHost() {
     uuids: [uuid.v4().toString()],
     name: "new_host",
     manufacturer: "no-name",
-    amount: 1,
+
     cpu: { sockets: 0, cores: 0 },
     ram: { slots: 0, size: 0 },
     storage: {
@@ -42,16 +44,6 @@ function clk_addHost() {
       raid: RAIDEnums.R0,
     },
   });
-  createToast("New Host added!", { type: "success" });
+  createToast("New Host added!", TOAST_SUCCESS);
 }
-
-/*function clk_removeItem(host_uuid: string) {
-  let item_to_remove = store.hostsList.find((host) => host.uuid == host_uuid);
-  store.hosts = store.hosts.filter((host) => {
-    return host !== item_to_remove;
-  });
-  createToast("Host " + item_to_remove?.name + " removed!", {
-    type: "success",
-  });
-}*/
 </script>
