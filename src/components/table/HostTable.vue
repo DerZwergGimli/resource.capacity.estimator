@@ -80,10 +80,11 @@
               <p class="text-sm pt-1">
                 Netto Storage =
                 {{
-                  (
-                    (host.storage.amount * host.storage.size) /
-                    1.073741824
-                  ).toFixed(2)
+                  calculate_storage_netto(
+                    host.storage.amount,
+                    host.storage.size,
+                    2
+                  )
                 }}
                 GB
               </p>
@@ -102,15 +103,20 @@
                 {{ raid }}
               </option>
             </select>
-            <p class="text-sm pt-1">
-              {{
-                (
-                  (host.storage.amount * host.storage.size) /
-                  1.073741824
-                ).toFixed(2)
-              }}
-              GB
-            </p>
+            <div class="flex flex-row space-x-1">
+              <i class="bi bi-calculator"></i>
+              <p class="text-sm pt-1">
+                {{
+                  caluclate_raid(
+                    host.storage.amount,
+                    host.storage.size,
+                    host.storage.raid,
+                    1
+                  )
+                }}
+                GB
+              </p>
+            </div>
           </th>
 
           <th>
@@ -143,7 +149,11 @@
 <script setup lang="ts">
 import { defineProps, PropType } from "vue";
 import { Host } from "@/store/types/Host";
-import { RAIDCONST, RAIDEnums } from "@/store/types/enums";
+import {
+  calculate_storage_netto,
+  caluclate_raid,
+} from "@/extra/calculator_storage";
+import { RAIDEnums } from "@/store/types/enums";
 import HostResources from "@/components/table/table_elements/HostResources.vue";
 import { appStorage } from "@/store/AppStorage";
 const store = appStorage();

@@ -19,4 +19,6 @@ export enum RAIDEnums {
   R0 = "RAID0",
   R1 = "RAID1",
   R5 = "RAID5",
+  R6 = "RAID6",
+  R10 = "RAID10",
 }
