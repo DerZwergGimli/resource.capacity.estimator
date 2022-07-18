@@ -20,6 +20,7 @@ import HostTable from "@/components/table/HostTable.vue";
 import { createToast } from "mosha-vue-toastify";
 import { appStorage } from "@/store/AppStorage";
 import { defineComponent } from "vue";
+import { RAIDCONST } from "@/store/types/enums";
 const store = appStorage();
 
 store.init();
@@ -35,7 +36,11 @@ function clk_addHost() {
     amount: 1,
     cpu: { sockets: 0, cores: 0 },
     ram: { slots: 0, size: 0 },
-    storage: { amount: 0, size: 0 },
+    storage: {
+      amount: 0,
+      size: 0,
+      raid: String,
+    },
   });
   createToast("New Host added!", { type: "success" });
 }

@@ -43,6 +43,12 @@
               @changed_first="(value) => (host.cpu.sockets = parseInt(value))"
               @changed_second="(value) => (host.cpu.cores = parseInt(value))"
             ></HostResources>
+            <div class="flex flex-row space-x-2">
+              <i class="bi bi-calculator"></i>
+              <p class="text-sm pt-1">
+                vCores = {{ host.cpu.sockets * host.cpu.cores }} Cores
+              </p>
+            </div>
           </th>
           <th>
             <HostResources
@@ -52,6 +58,12 @@
               @changed_first="(value) => (host.ram.slots = parseInt(value))"
               @changed_second="(value) => (host.ram.size = parseInt(value))"
             ></HostResources>
+            <div class="flex flex-row space-x-2">
+              <i class="bi bi-calculator"></i>
+              <p class="text-sm pt-1">
+                vRAM = {{ host.ram.slots * host.ram.size }} GB
+              </p>
+            </div>
           </th>
           <th>
             <HostResources
@@ -63,15 +75,44 @@
               "
               @changed_second="(value) => (host.storage.size = parseInt(value))"
             ></HostResources>
+            <div class="flex flex-row space-x-2">
+              <i class="bi bi-calculator"></i>
+              <p class="text-sm pt-1">
+                Netto Storage =
+                {{
+                  (
+                    (host.storage.amount * host.storage.size) /
+                    1.073741824
+                  ).toFixed(2)
+                }}
+                GB
+              </p>
+            </div>
           </th>
           <th>
-            <select class="select select-bordered select-xs max-w-xs">
-              <option>RAID 1</option>
-              <option>RAID 5</option>
-              <option>RAID 6</option>
-              <option>RAID 10</option>
+            <select
+              v-model="host.storage.raid"
+              class="select select-bordered select-xs max-w-xs"
+            >
+              <option
+                v-for="raid in Object.values(RAIDEnums)"
+                :key="raid"
+                :selected="host.storage.raid === raid"
+              >
+                {{ raid }}
+              </option>
             </select>
+            <p class="text-sm pt-1">
+              {{
+                (
+                  (host.storage.amount * host.storage.size) /
+                  1.073741824
+                ).toFixed(2)
+              }}
+              GB
+            </p>
           </th>
+
           <th>
             <input
               class="input input-bordered input-xs w-full max-w-xs"
@@ -102,6 +143,7 @@
 <script setup lang="ts">
 import { defineProps, PropType } from "vue";
 import { Host } from "@/store/types/Host";
+import { RAIDCONST, RAIDEnums } from "@/store/types/enums";
 import HostResources from "@/components/table/table_elements/HostResources.vue";
 import { appStorage } from "@/store/AppStorage";
 const store = appStorage();

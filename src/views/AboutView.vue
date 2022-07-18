@@ -17,4 +17,14 @@
       </p>
     </div>
   </div>
+  <button class="btn btn-primary" @click="clear_local_storage">
+    Clear ALL
+  </button>
 </template>
+
+<script setup lang="ts">
+function clear_local_storage() {
+  localStorage.clear();
+  console.log("Clear local Storage");
+}
+</script>

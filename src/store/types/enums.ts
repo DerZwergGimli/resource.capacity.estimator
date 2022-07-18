@@ -14,3 +14,9 @@ export enum HardwareEnums {
   ram = "ram",
   storage = "storage",
 }
+
+export enum RAIDEnums {
+  R0 = "RAID0",
+  R1 = "RAID1",
+  R5 = "RAID5",
+}

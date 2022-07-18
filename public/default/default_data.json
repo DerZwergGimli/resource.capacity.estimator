@@ -16,7 +16,8 @@
       },
       "storage": {
         "amount": 10,
-        "size": 1000
+        "size": 1000,
+        "raid": "RAID5"
       }
     },
     {
@@ -35,7 +36,8 @@
       },
       "storage": {
         "amount": 10,
-        "size": 1000
+        "size": 1000,
+        "raid": "RAID1"
       }
     }
   ],

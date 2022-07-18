@@ -1,3 +1,4 @@
+import { RAIDEnums } from "@/store/types/enums";
 export interface Host {
   id: number;
   uuids: string[];
@@ -21,4 +22,5 @@ export interface RAM {
 export interface Storage {
   amount: number;
   size: number;
+  raid: RAIDEnums;
 }

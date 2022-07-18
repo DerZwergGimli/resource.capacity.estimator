@@ -124,7 +124,7 @@
 <script setup lang="ts">
 import { defineProps, PropType } from "vue";
 import { AppDataHosts, AppDataVms } from "@/js/types/data-types";
-import { dataStore } from "@/store/DataStore";
+import { appStorage } from "@/store/AppStorage";
 import AssignmentVMElement from "@/components/special/assignment_elements/AssignmentVMElement.vue";
 import { calculate_cpu_used } from "@/js/calculator";
 import {
@@ -133,7 +133,7 @@ import {
   system_dimensioning_types,
 } from "@/js/types/enums";
 
-const data = dataStore();
+const data = appStorage();
 
 defineProps({
   host: {
