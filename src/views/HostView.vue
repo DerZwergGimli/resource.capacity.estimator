@@ -1,22 +1,7 @@
 <template>
   <div class="host flex flex-col text-center">
     <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
-      <h1>Hosts Configuration</h1>
-      <div class="flex flex-row space-x-2">
-        <!-- TODO: Move this into a separate component  -->
-        <!--        <ValueCard
-          text="host"
-          :value="calculate_total_hosts(store.hosts)"
-        ></ValueCard>
-        <ValueCard
-          text="vm"
-          :value="calculate_total_vms(store.vms)"
-        ></ValueCard>
-        <ValueCard
-          text="assignment"
-          :value="store.assignments.length"
-        ></ValueCard>-->
-      </div>
+      <h1 class="text-primary font-bold underline">Hosts Configuration</h1>
     </div>
     <HostTable
       class="m-4"

@@ -10,6 +10,7 @@
           <th>CPU <i class="bi bi-cpu"></i></th>
           <th>RAM <i class="bi bi-memory"></i></th>
           <th>Storage <i class="bi bi-device-hdd"></i></th>
+          <th>RAID</th>
           <th>Amount</th>
           <th></th>
         </tr>
@@ -62,11 +63,13 @@
               "
               @changed_second="(value) => (host.storage.size = parseInt(value))"
             ></HostResources>
+          </th>
+          <th>
             <select class="select select-bordered select-xs max-w-xs">
-              <option disabled selected>A</option>
-              <option>B</option>
-              <option>C</option>
-              <option>D</option>
+              <option>RAID 1</option>
+              <option>RAID 5</option>
+              <option>RAID 6</option>
+              <option>RAID 10</option>
             </select>
           </th>
           <th>
