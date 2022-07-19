@@ -64,6 +64,7 @@
             :system_recommendation="storage.system_recommendation"
           ></AssignmentHostElement>
           <div
+            class="space-y-1"
             v-if="
               storage.assignmentsList.find(
                 (assigment) => assigment.host_uuid === host_element_uuid
@@ -71,7 +72,7 @@
             "
           >
             <div
-              class="flex flex-row space-x-2 border-2"
+              class="flex flex-row"
               v-for="assigned_vm_uuid in storage.assignmentsList.find(
                 (assignment) => assignment.host_uuid === host_element_uuid
               ).vm_uuid"
