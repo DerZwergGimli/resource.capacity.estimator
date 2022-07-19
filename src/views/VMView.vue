@@ -2,23 +2,11 @@
   <div class="flex flex-col text-center">
     <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
       <h1>VM Configuration</h1>
-      <div class="flex flex-row space-x-2">
-        <!-- TODO: Move this into a separate component  -->
-        <!--        <ValueCard
-          text="host"
-          :value="calculate_total_hosts(store.hosts)"
-        ></ValueCard>
-        <ValueCard text="vm" :value="calculate_total_vms(data.vms)"></ValueCard>
-        <ValueCard
-          text="assignment"
-          :value="data.assignments.length"
-        ></ValueCard>-->
-      </div>
     </div>
     <VMTable
       class="m-4"
       :vms="store.vmsList"
-      @clk_remove_item="(vm_uuids) => store.remove_vm(vm_uuids)"
+      @clk_remove_item="(vm_uuids) => clk_removeVM(vm_uuids)"
     ></VMTable>
     <div>
       <button class="btn" @click="clk_addVM()">Add VM</button>
@@ -33,6 +21,7 @@ import { uuid } from "vue-uuid";
 import { createToast } from "mosha-vue-toastify";
 import { defineComponent, unref, watch } from "vue";
 import ValueCard from "@/components/special/ValueCard.vue";
+import { TOAST_SUCCESS } from "@/extra/toast-config";
 import { appStorage } from "@/store/AppStorage";
 defineComponent({ VMTable });
 
@@ -62,16 +51,11 @@ function clk_addVM() {
       max: 0,
     },
   });
-  createToast("New VM added!", { type: "success" });
+  createToast("New VM added!", TOAST_SUCCESS);
 }
 
-/*function clk_removeItem(vm_uuid: string) {
-  let item_to_remove = store.vmsList.find((vm) => vm.uuid == vm_uuid);
-  store.vmsList = store.vmsList.filter((vm) => {
-    return vm !== item_to_remove;
-  });
-  createToast("VM " + item_to_remove?.name + " removed!", {
-    type: "success",
-  });
-}*/
+function clk_removeVM(vm_uuids: any) {
+  store.remove_vm(vm_uuids);
+  createToast("VM removed!", TOAST_SUCCESS);
+}
 </script>

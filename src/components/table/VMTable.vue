@@ -23,7 +23,7 @@
               class="input input-bordered input-xs w-full max-w-xs"
               type="text"
               :value="vm.name"
-              @input="(event) => (vm.name = event.target.value)"
+              @input="(event) => (vm.name = event?.target?.value || 0)"
             />
           </th>
           <th>
@@ -35,37 +35,25 @@
             />
           </th>
           <th>
-            <VMResources
-              :min="vm.vcpu.min"
-              @changed_min="(value) => (vm.vcpu.min = parseInt(value))"
-              :rec="vm.vcpu.rec"
-              @changed_rec="(value) => (vm.vcpu.rec = parseInt(value))"
-              :max="vm.vcpu.max"
-              @changed_max="(value) => (vm.vcpu.max = parseInt(value))"
+            <VMResouce
+              :value="vm.vcpu.rec"
+              @changed="(value) => (vm.vcpu.rec = parseInt(value))"
               type="cpu"
-            ></VMResources>
+            ></VMResouce>
           </th>
           <th>
-            <VMResources
-              :min="vm.vram.min"
-              @changed_min="(value) => (vm.vram.min = parseInt(value))"
-              :rec="vm.vram.rec"
-              @changed_rec="(value) => (vm.vram.rec = parseInt(value))"
-              :max="vm.vram.max"
-              @changed_max="(value) => (vm.vram.max = parseInt(value))"
+            <VMResouce
+              :value="vm.vram.rec"
+              @changed="(value) => (vm.vram.rec = parseInt(value))"
               type="ram"
-            ></VMResources>
+            ></VMResouce>
           </th>
           <th>
-            <VMResources
-              :min="vm.vstorage.min"
-              @changed_min="(value) => (vm.vstorage.min = parseInt(value))"
-              :rec="vm.vstorage.rec"
-              @changed_rec="(value) => (vm.vstorage.rec = parseInt(value))"
-              :max="vm.vstorage.max"
-              @changed_max="(value) => (vm.vstorage.max = parseInt(value))"
+            <VMResouce
+              :value="vm.vstorage.rec"
+              @changed="(value) => (vm.vstorage.rec = parseInt(value))"
               type="storage"
-            ></VMResources>
+            ></VMResouce>
           </th>
           <th>
             <label class="input-group input-group-xs">
@@ -104,6 +92,7 @@
 <script setup lang="ts">
 import { defineProps, PropType } from "vue";
 import VMResources from "@/components/table/table_elements/VMResources.vue";
+import VMResouce from "@/components/table/table_elements/VMResource.vue";
 import { VM } from "@/store/types/VM";
 import { appStorage } from "@/store/AppStorage";
 
@@ -116,4 +105,10 @@ defineProps({
     default: null,
   },
 });
+</script>
+
+<script lang="ts">
+export default {
+  name: "VMTable",
+};
 </script>
