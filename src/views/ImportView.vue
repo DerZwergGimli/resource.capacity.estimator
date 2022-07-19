@@ -3,14 +3,9 @@
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>IMPORT</h1>
     </div>
-    <div class="mx-4">
-      <!-- <input
-        type="text"
-        placeholder="Type here"
-        class="input input-bordered input-primary w-full max-w-xs"
-        @input="loadFile($event.target.value)"
-      /> -->
-      <input type="file" @change="evt_uploadFile" />
+    <div class="divider"></div>
+    <div class="flex mx-4 h-24 rounded-box bg-base-300 place-content-center">
+      <input class="pt-5" type="file" @change="evt_uploadFile" />
     </div>
   </div>
 </template>
@@ -18,9 +13,6 @@
 <script setup lang="ts">
 import { createToast } from "mosha-vue-toastify";
 import { appStorage } from "@/store/AppStorage";
-import { Host } from "@/store/types/Host";
-import { VM } from "@/store/types/VM";
-import { Assignment } from "@/store/types/Assignment";
 
 const storage = appStorage();
 storage.init();
@@ -49,15 +41,4 @@ function evt_uploadFile(event: any) {
 
   reader.readAsText(blob);
 }
-
-// function loadFile(value) {
-//   try {
-//     JSON.parse(value);
-//     data.import(JSON.parse(value));
-//     createToast("Data Imported", { type: "success" });
-//   } catch {
-//     console.log(".");
-//     createToast("Unable to load Data", { type: "danger" });
-//   }
-// }
 </script>

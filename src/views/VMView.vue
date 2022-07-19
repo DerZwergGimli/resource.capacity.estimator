@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col text-center">
-    <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
+    <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>VM Configuration</h1>
     </div>
     <VMTable
@@ -21,7 +21,7 @@ import { uuid } from "vue-uuid";
 import { createToast } from "mosha-vue-toastify";
 import { defineComponent, unref, watch } from "vue";
 import ValueCard from "@/components/special/ValueCard.vue";
-import { TOAST_SUCCESS } from "@/extra/toast-config";
+import { TOAST_SUCCESS, TOAST_WARNING } from "@/extra/toast-config";
 import { appStorage } from "@/store/AppStorage";
 defineComponent({ VMTable });
 
@@ -54,8 +54,8 @@ function clk_addVM() {
   createToast("New VM added!", TOAST_SUCCESS);
 }
 
-function clk_removeVM(vm_uuids: any) {
+function clk_removeVM(vm_uuids: string[]) {
   store.remove_vm(vm_uuids);
-  createToast("VM removed!", TOAST_SUCCESS);
+  createToast("VM removed!", TOAST_WARNING);
 }
 </script>

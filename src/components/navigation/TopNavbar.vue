@@ -1,7 +1,8 @@
 <template>
   <div class="navbar bg-base-100 shadow-2xl">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl"
+      <a
+        class="btn btn-ghost normal-case text-xl bg-primary text-primary-content"
         >Resource Capacity Estimator</a
       >
     </div>

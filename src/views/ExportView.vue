@@ -3,7 +3,8 @@
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>Export</h1>
     </div>
-    <button class="btn m-4" @click="clk_download()">
+    <div class="divider"></div>
+    <button class="btn m-4 hover:bg-primary" @click="clk_download()">
       <div class="flex flex-row space-x-2">
         <i class="bi bi-download"></i>
         <div>Download</div>

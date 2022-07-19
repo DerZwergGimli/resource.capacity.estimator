@@ -1,12 +1,12 @@
 <template>
   <div class="host flex flex-col text-center">
-    <div class="grid m-4 py-2 card bg-base-300 rounded-box place-items-center">
-      <h1 class="text-primary font-bold underline">Hosts Configuration</h1>
+    <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
+      <h1>Hosts Configuration</h1>
     </div>
     <HostTable
       class="m-4"
       :hosts="store.hostsList"
-      @clk_remove_item="(uuids) => store.remove_host(uuids)"
+      @clk_remove_item="(host_uuids) => clk_removeHost(host_uuids)"
     ></HostTable>
     <div>
       <button class="btn" @click="clk_addHost()">Add Host</button>
@@ -21,7 +21,7 @@ import { createToast } from "mosha-vue-toastify";
 import { appStorage } from "@/store/AppStorage";
 import { defineComponent } from "vue";
 import { RAIDEnums } from "@/store/types/enums";
-import { TOAST_SUCCESS } from "@/extra/toast-config";
+import { TOAST_SUCCESS, TOAST_WARNING } from "@/extra/toast-config";
 
 const store = appStorage();
 
@@ -45,5 +45,10 @@ function clk_addHost() {
     },
   });
   createToast("New Host added!", TOAST_SUCCESS);
+}
+
+function clk_removeHost(host_uuids: string[]) {
+  store.remove_host(host_uuids);
+  createToast("Host removed!", TOAST_WARNING);
 }
 </script>
