@@ -8,16 +8,19 @@
       <HostUsageElement
         :host_uuid="host_uuid"
         :virtual_hw="VirtualHardwareEnums.vcpu"
+        :hw_conf="HardwareEnums.cpu"
         :host="host"
       ></HostUsageElement>
       <HostUsageElement
         :host_uuid="host_uuid"
-        :virtual_hw="VirtualHardwareEnums.vram"
+        :virtual_hw_conf="VirtualHardwareEnums.vram"
+        :hw_conf="HardwareEnums.ram"
         :host="host"
       ></HostUsageElement>
       <HostUsageElement
         :host_uuid="host_uuid"
         :virtual_hw="VirtualHardwareEnums.vstorage"
+        :hw_conf="HardwareEnums.storage"
         :host="host"
       ></HostUsageElement>
     </div>
@@ -31,6 +34,7 @@ import { VM } from "@/store/types/VM";
 import { Assignment } from "@/store/types/Assignment";
 import {
   VirtualHardwareEnums,
+  HardwareEnums,
   SystemRecommendationEnums,
 } from "@/store/types/enums";
 import { get_used_cpu } from "@/extra/calculator";

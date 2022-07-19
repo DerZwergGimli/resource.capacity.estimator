@@ -46,7 +46,7 @@
             <div class="flex flex-row space-x-2">
               <i class="bi bi-calculator"></i>
               <p class="text-sm pt-1">
-                {{ host.cpu.sockets * host.cpu.cores }} vCores
+                {{ host.cpu.sockets * host.cpu.cores * 2 }} vCores
               </p>
             </div>
           </th>
