@@ -5,10 +5,10 @@
   <button class="btn m-4" @click="btn_clearAllAssignments()">Reset</button>
   <div class="flex flex-col w-full m-4 lg:flex-row">
     <div
-      class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
+      class="flex flex-grow space-y-2 p-2 card bg-base-300 rounded-box place-items-center"
     >
       <div
-        class="flex flex-col space-y-2"
+        class="flex flex-col space-y-1 w-full px-10"
         v-for="vm_element in storage.vmsList"
         :key="vm_element"
       >
@@ -39,7 +39,7 @@
     </div>
     <div class="divider lg:divider-horizontal">OR</div>
     <div
-      class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
+      class="flex flex-grow space-y-2 card p-2 bg-base-300 rounded-box place-items-center"
     >
       <div
         class="space-y-2"
@@ -47,7 +47,7 @@
         :key="host_element"
       >
         <div
-          class="w-96 border-2 border-blue-600 drop-zone"
+          class="w-96 border-2 border-primary p-2 rounded-xl drop-zone"
           @drop="on_drop($event, host_element_uuid)"
           @dragover.prevent
           @dragenter.prevent
@@ -71,7 +71,7 @@
             "
           >
             <div
-              class="flex flex-row space-x-2 border-2 border-green-400"
+              class="flex flex-row space-x-2 border-2"
               v-for="assigned_vm_uuid in storage.assignmentsList.find(
                 (assignment) => assignment.host_uuid === host_element_uuid
               ).vm_uuid"

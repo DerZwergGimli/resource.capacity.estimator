@@ -4,7 +4,7 @@
       <p class="text-2xl underline">{{ host.name }}</p>
     </div>
 
-    <div class="flex flex-row justify-evenly bg-info m-2 p-2 rounded-lg">
+    <div class="flex flex-row justify-evenly m-2 p-2 rounded-lg">
       <HostUsageElement
         :host_uuid="host_uuid"
         :virtual_hw="VirtualHardwareEnums.vcpu"

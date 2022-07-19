@@ -2,6 +2,7 @@
   <div class="flex flex-col text-center">
     <div class="grid m-4 h-20 card bg-base-300 rounded-box place-items-center">
       <h1>Overview</h1>
+      <p>I know here are isses (if a assigned host is removed!)</p>
     </div>
     <div class="divider"></div>
     <div class="grid xl:grid-cols-2 gap-4 m-4">

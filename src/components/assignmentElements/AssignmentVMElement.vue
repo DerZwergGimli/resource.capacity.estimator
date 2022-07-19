@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-row w-full space-x-4 bg-red-300 items-center" v-if="vm">
+  <div
+    class="flex flex-row w-full space-x-4 bg-base-100 rounded-2xl px-3 items-center"
+    v-if="vm"
+  >
     <p class="text-lg w-full">{{ vm.name }}</p>
     <div class="flex flex-row space-x-1">
       <p>{{ vm.vcpu[system_recommendation] }}</p>
