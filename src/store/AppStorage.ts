@@ -1,3 +1,4 @@
+import { PresetsVM } from "./types/presets";
 import { defineStore } from "pinia";
 import { Host } from "@/store/types/Host";
 import { VM } from "@/store/types/VM";
@@ -14,6 +15,7 @@ export const appStorage = defineStore({
     vmsList: useStorage("vmsList", [] as VM[]),
     assignmentsList: useStorage("assignmentsList", [] as Assignment[]),
     system_recommendation: "rec" as SystemRecommendationEnums,
+    presets_vm: useStorage("presets", [] as PresetsVM[]),
   }),
 
   actions: {
@@ -25,6 +27,7 @@ export const appStorage = defineStore({
         //   !this.assignmentsList.length
         // ) {
         console.info("Initializing AppStore!");
+        //Fetch default_data.json
         await fetch("default/default_data.json")
           .then((response) => response.json())
           .then((data) => {
@@ -38,6 +41,16 @@ export const appStorage = defineStore({
               this.assignmentsList.length == data.assignments
                 ? this.assignmentsList
                 : data.assignments;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+        //Fetch preset.json
+        await fetch("default/presets.json")
+          .then((response) => response.json())
+          .then((data) => {
+            this.presets_vm = data.presets_vms;
           })
           .catch((error) => {
             console.error(error);
