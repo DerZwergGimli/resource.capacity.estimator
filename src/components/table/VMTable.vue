@@ -6,7 +6,7 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Manufacturer</th>
+          <th>OS</th>
           <th>CPU <i class="bi bi-cpu"></i></th>
           <th>RAM <i class="bi bi-memory"></i></th>
           <th>Storage <i class="bi bi-device-hdd"></i></th>

@@ -41,7 +41,6 @@
     <div
       class="flex flex-grow space-y-2 card bg-base-300 rounded-box place-items-center"
     >
-      <SystemDimensioningTabs></SystemDimensioningTabs>
       <div
         class="space-y-2"
         v-for="host_element in storage.hostsList"
@@ -105,7 +104,7 @@
 import { appStorage } from "@/store/AppStorage";
 import AssignmentVMElement from "@/components/assignmentElements/AssignmentVMElement.vue";
 import AssignmentHostElement from "@/components/assignmentElements/AssignmentHostElement.vue";
-import SystemDimensioningTabs from "@/components/special/SystemDimensioningTabs";
+
 import { defineComponent } from "vue";
 
 defineComponent({
