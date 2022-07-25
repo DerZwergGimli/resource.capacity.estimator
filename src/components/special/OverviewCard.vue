@@ -22,7 +22,7 @@
               storage.system_recommendation
             )
           "
-          :total="find_host_CPU_total(assignment?.host_uuid ?? 'none')"
+          :total="find_host_CPU_total(assignment?.host_uuid ?? 'none') * 2"
         ></GaugeChart>
         <GaugeChart
           class="w-64"

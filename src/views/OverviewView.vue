@@ -5,9 +5,12 @@
       <p>I know here are isses (if a assigned host is removed!)</p>
     </div>
     <div class="divider"></div>
-    <div class="grid xl:grid-cols-2 gap-4 m-4">
-      <div v-for="assignment in storage.assignmentsList" :key="assignment">
-        <OverviewCard :assignment="assignment"></OverviewCard>
+    <button class="btn m-4" @click="btn_print">Print</button>
+    <div id="printMe">
+      <div class="grid xl:grid-cols-2 gap-4 m-4">
+        <div v-for="assignment in storage.assignmentsList" :key="assignment">
+          <OverviewCard :assignment="assignment"></OverviewCard>
+        </div>
       </div>
     </div>
   </div>
@@ -17,6 +20,7 @@
 import { appStorage } from "@/store/AppStorage";
 import OverviewCard from "@/components/special/OverviewCard.vue";
 import { defineComponent } from "@vue/runtime-core";
+import VueHtmlToPaper from "vue-html-to-paper";
 
 defineComponent({
   OverviewCard,
@@ -24,6 +28,10 @@ defineComponent({
 
 const storage = appStorage();
 storage.init();
+
+async function btn_print() {
+  //await VueHtmlToPaper("print");
+}
 </script>
 
 <script>
