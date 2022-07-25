@@ -22,7 +22,7 @@ export const appStorage = defineStore({
     async init() {
       if (!this.initalized) {
         // if (
-        //   !this.hostsList.length ||
+        ///   !this.hostsList.length ||
         //   !this.vmsList.length ||
         //   !this.assignmentsList.length
         // ) {
