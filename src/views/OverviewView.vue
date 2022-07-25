@@ -20,7 +20,6 @@
 import { appStorage } from "@/store/AppStorage";
 import OverviewCard from "@/components/special/OverviewCard.vue";
 import { defineComponent } from "@vue/runtime-core";
-import VueHtmlToPaper from "vue-html-to-paper";
 
 defineComponent({
   OverviewCard,
