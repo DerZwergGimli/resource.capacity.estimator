@@ -45,15 +45,25 @@
       :style="
         '--value: ' +
         calculate_percentage(
-          host.storage.amount * host.storage.size,
-          get_used(host_uuid, VirtualHardwareEnums.vram)
+          caluclate_raid(
+            host.storage.amount,
+            host.storage.size,
+            host.storage.raid,
+            1
+          ),
+          get_used(host_uuid, VirtualHardwareEnums.vstorage)
         )
       "
     >
       {{
         calculate_percentage(
-          host.storage.amount * host.storage.size,
-          get_used(host_uuid, VirtualHardwareEnums.vram)
+          caluclate_raid(
+            host.storage.amount,
+            host.storage.size,
+            host.storage.raid,
+            1
+          ),
+          get_used(host_uuid, VirtualHardwareEnums.vstorage)
         )
       }}
       %
@@ -63,9 +73,9 @@
       <i
         :class="
           'bi self-center pr-2' +
-          (virtual_hw_conf == VirtualHardwareEnums.vcpu
+          (virtual_hw_conf === VirtualHardwareEnums.vcpu
             ? ' bi-cpu'
-            : virtual_hw_conf == VirtualHardwareEnums.vram
+            : virtual_hw_conf === VirtualHardwareEnums.vram
             ? ' bi-memory'
             : ' bi-device-hdd')
         "
@@ -81,7 +91,14 @@
         {{ host.ram.slots * host.ram.size }}
       </p>
       <p v-if="hw_conf === HardwareEnums.storage">
-        {{ host.storage.amount * host.storage.size }}
+        {{
+          caluclate_raid(
+            host.storage.amount,
+            host.storage.size,
+            host.storage.raid,
+            1
+          )
+        }}
       </p>
     </div>
   </div>

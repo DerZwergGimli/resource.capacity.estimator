@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <!-- body -->
-        <tr v-for="(host, index) in hosts" :key="host">
+        <tr v-for="(host, index) in hosts" :key="index">
           <th>{{ index }}</th>
           <th>
             <input

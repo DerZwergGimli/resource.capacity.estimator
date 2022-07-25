@@ -6,7 +6,12 @@
     data-toggle-theme="dark,light"
     data-act-class="ACTIVECLASS"
   /> -->
-  <button checked data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+  <button
+    class="btn btn-primary btn-circle"
+    checked
+    data-toggle-theme="dark,light"
+    data-act-class="ACTIVECLASS"
+  >
     <i class="bi bi-brightness-high"></i>
   </button>
 </template>

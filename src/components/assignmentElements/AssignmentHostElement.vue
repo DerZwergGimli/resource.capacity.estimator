@@ -7,7 +7,7 @@
     <div class="flex flex-row justify-evenly m-2 p-2 rounded-lg">
       <HostUsageElement
         :host_uuid="host_uuid"
-        :virtual_hw="VirtualHardwareEnums.vcpu"
+        :virtual_hw_conf="VirtualHardwareEnums.vcpu"
         :hw_conf="HardwareEnums.cpu"
         :host="host"
       ></HostUsageElement>
@@ -19,7 +19,7 @@
       ></HostUsageElement>
       <HostUsageElement
         :host_uuid="host_uuid"
-        :virtual_hw="VirtualHardwareEnums.vstorage"
+        :virtual_hw_conf="VirtualHardwareEnums.vstorage"
         :hw_conf="HardwareEnums.storage"
         :host="host"
       ></HostUsageElement>
