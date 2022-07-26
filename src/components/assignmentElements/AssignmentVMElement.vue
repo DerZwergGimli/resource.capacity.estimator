@@ -3,16 +3,16 @@
     class="flex flex-row w-full space-x-4 bg-base-100 rounded-2xl px-3 items-center"
     v-if="vm"
   >
-    <p class="text-lg w-full">{{ vm.name }}</p>
-    <div class="flex flex-row space-x-1">
+    <p class="basis-2/5 text-lg w-full">{{ vm.name }}</p>
+    <div class="basis-1/5 justify-end flex flex-row space-x-1">
       <p>{{ vm.vcpu[system_recommendation] }}</p>
       <i class="bi bi-cpu"></i>
     </div>
-    <div class="flex flex-row space-x-1">
+    <div class="basis-1/5 justify-end flex flex-row space-x-1">
       <p>{{ vm.vram[system_recommendation] }}</p>
       <i class="bi bi-memory"></i>
     </div>
-    <div class="flex flex-row space-x-1">
+    <div class="basis-1/5 justify-end flex flex-row space-x-1">
       <p>{{ vm.vstorage[system_recommendation] }}</p>
       <i class="bi bi-device-hdd"></i>
     </div>

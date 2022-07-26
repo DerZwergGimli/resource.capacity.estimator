@@ -3,7 +3,7 @@
     <h1>Assignment</h1>
   </div>
   <button class="btn m-4" @click="btn_clearAllAssignments()">Reset</button>
-  <div class="flex flex-col w-full m-4 lg:flex-row">
+  <div class="flex flex-col w-auto m-4 lg:flex-row">
     <div
       class="flex flex-grow space-y-2 p-2 card bg-base-300 rounded-box place-items-center"
     >
@@ -39,15 +39,15 @@
     </div>
     <div class="divider lg:divider-horizontal">OR</div>
     <div
-      class="flex flex-grow space-y-2 card p-2 bg-base-300 rounded-box place-items-center"
+      class="flex flex-auto space-y-2 card p-2 bg-base-300 rounded-box place-items-center"
     >
       <div
-        class="space-y-2"
+        class="space-y-2 w-full px-2"
         v-for="host_element in storage.hostsList"
         :key="host_element"
       >
         <div
-          class="w-96 border-2 border-primary p-2 rounded-xl drop-zone"
+          class="border-2 border-primary p-2 rounded-xl drop-zone"
           @drop="on_drop($event, host_element_uuid)"
           @dragover.prevent
           @dragenter.prevent
