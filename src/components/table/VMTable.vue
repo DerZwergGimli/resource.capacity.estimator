@@ -37,7 +37,7 @@
           </th>
           <th>
             <select
-              class="select select-bordered select-xs max-w-xs"
+              class="select select-bordered select-xs w-full max-w-xs"
               @change="evt_change_preset($event, vm.uuids)"
             >
               <option

@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-1 form-control">
     <label class="input-group input-group-xs">
-      <span class="w-14"
+      <span class="w-full"
         ><i
           :class="
             type === 'cpu'
@@ -21,7 +21,7 @@
         :value="value"
         @input="(event) => $emit('changed', event.target.value)"
       />
-      <span class="">
+      <span class="w-full">
         {{ type === "cpu" ? "Cores" : "GB" }}
       </span>
     </label>
