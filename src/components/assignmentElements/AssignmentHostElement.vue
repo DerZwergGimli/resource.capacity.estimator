@@ -1,7 +1,8 @@
 <template>
   <div class="flex flex-col" v-if="host">
     <div class="flex flex-row self-center pb-2">
-      <p class="text-2xl underline">{{ host.name }}</p>
+      <p class="text-2xl font-bold">{{ host.name }}</p>
+      <span class="badge badge-sm">{{ host_index }}</span>
     </div>
 
     <div class="flex flex-row justify-evenly m-2 p-2 rounded-lg">
@@ -52,6 +53,10 @@ defineProps({
   system_recommendation: {
     type: String as PropType<SystemRecommendationEnums>,
     default: "rec",
+  },
+  host_index: {
+    type: Number,
+    default: 0,
   },
 });
 

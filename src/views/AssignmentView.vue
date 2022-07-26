@@ -46,12 +46,13 @@
         v-for="host_element in storage.hostsList"
         :key="host_element"
       >
+        {{ index }}
         <div
           class="border-2 border-primary p-2 rounded-xl drop-zone"
           @drop="on_drop($event, host_element_uuid)"
           @dragover.prevent
           @dragenter.prevent
-          v-for="host_element_uuid in host_element.uuids"
+          v-for="(host_element_uuid, host_index) in host_element.uuids"
           :key="host_element_uuid"
         >
           <AssignmentHostElement
@@ -62,6 +63,7 @@
               )
             "
             :system_recommendation="storage.system_recommendation"
+            :host_index="host_index"
           ></AssignmentHostElement>
           <div
             class="space-y-1"
