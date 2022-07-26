@@ -1,6 +1,17 @@
 <template>
   <div class="space-y-1 form-control">
     <label class="input-group input-group-xs">
+      <span class="w-14"
+        ><i
+          :class="
+            type === 'cpu'
+              ? 'bi bi-cpu'
+              : type === 'ram'
+              ? 'bi bi-memory'
+              : 'bi bi-device-hdd'
+          "
+        ></i
+      ></span>
       <input
         type="number"
         placeholder="Type here"

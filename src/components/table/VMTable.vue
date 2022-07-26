@@ -72,7 +72,7 @@
           </th>
           <th>
             <label class="input-group input-group-xs">
-              <span class="">Total</span>
+              <span class=""><i class="bi bi-123"></i></span>
               <input
                 :class="
                   'input input-bordered input-xs' +
@@ -89,7 +89,7 @@
                   }
                 "
               />
-              <span>#</span>
+              <span>Total</span>
             </label>
           </th>
           <th>
