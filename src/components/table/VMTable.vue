@@ -71,26 +71,28 @@
             ></VMResouce>
           </th>
           <th>
-            <label class="input-group input-group-xs">
-              <span class=""><i class="bi bi-123"></i></span>
-              <input
-                :class="
-                  'input input-bordered input-xs' +
-                  (vm.uuids.length == 0 ? ' input-error' : '')
-                "
-                type="number"
-                :value="vm.uuids.length"
-                @input="
-                  (event) => {
-                    store.check_uuid_length(
-                      vm.name,
-                      parseInt(event.target.value)
-                    );
-                  }
-                "
-              />
-              <span>Total</span>
-            </label>
+            <div class="flex flex-row">
+              <label class="input-group input-group-xs">
+                <span class="basis-1/4"><i class="bi bi-123"></i></span>
+                <input
+                  :class="
+                    'w-full input input-bordered input-xs' +
+                    (vm.uuids.length == 0 ? ' input-error' : '')
+                  "
+                  type="number"
+                  :value="vm.uuids.length"
+                  @input="
+                    (event) => {
+                      store.check_uuid_length(
+                        vm.name,
+                        parseInt(event.target.value)
+                      );
+                    }
+                  "
+                />
+                <span class="basis-1/4">Total</span>
+              </label>
+            </div>
           </th>
           <th>
             <i

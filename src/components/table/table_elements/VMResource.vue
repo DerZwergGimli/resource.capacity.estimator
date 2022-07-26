@@ -1,7 +1,7 @@
 <template>
-  <div class="space-y-1 form-control">
+  <div class="space-y-1 form-control flex flex-row">
     <label class="input-group input-group-xs">
-      <span class="w-full"
+      <span class="basis-1/4"
         ><i
           :class="
             type === 'cpu'
@@ -16,12 +16,13 @@
         type="number"
         placeholder="Type here"
         :class="
-          'input input-bordered input-xs' + (value == 0 ? ' input-error' : '')
+          'w-full input input-bordered input-xs ' +
+          (value == 0 ? ' input-error' : '')
         "
         :value="value"
         @input="(event) => $emit('changed', event.target.value)"
       />
-      <span class="w-full">
+      <span class="basis-1/4">
         {{ type === "cpu" ? "Cores" : "GB" }}
       </span>
     </label>
